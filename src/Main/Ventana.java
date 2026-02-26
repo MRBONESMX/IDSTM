@@ -4,17 +4,22 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JRadioButton;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 public class Ventana extends JFrame {
 	public Ventana() {
 		this.setVisible(true);
-		this.setSize(600, 600);
+		this.setSize(1250, 600);
 		this.setLocationRelativeTo(null);
 		this.setMinimumSize(new Dimension(200,200));
 		this.setMaximumSize(new Dimension(700,700));
@@ -80,7 +85,6 @@ public class Ventana extends JFrame {
 		contenedor.add(acceder);
 		
 		JCheckBox cajita = new JCheckBox("Recordarme");
-		cajita.setLocation(0,0);
 		cajita.setBounds(30, 280, 150, 30);
 		cajita.setOpaque(false);
 		cajita.setForeground(Color.WHITE);
@@ -97,6 +101,127 @@ public class Ventana extends JFrame {
  		
 		contenedor.repaint();
 		contenedor.revalidate();
+		
+		JPanel contenedorRegistro = new JPanel();
+		contenedorRegistro.setOpaque(true);
+		contenedorRegistro.setBackground(Color.black);
+		contenedorRegistro.setSize(600,600);
+		contenedorRegistro.setLocation(650, 0);
+		this.add(contenedorRegistro);
+		contenedorRegistro.setLayout(null);
+		
+		JLabel title_register = new JLabel();
+		title_register.setText("Registro");
+		title_register.setSize(200, 50);
+		title_register.setOpaque(false);
+		title_register.setLocation(200, 10);
+		title_register.setFont(new Font("Arial", Font.BOLD,30));
+		title_register.setHorizontalAlignment(JLabel.CENTER);
+		title_register.setForeground(Color.white);
+		contenedorRegistro.add(title_register);
+		
+		JLabel username_registro = new JLabel();
+		username_registro.setText("Username:"); 
+		username_registro.setOpaque(false);
+		username_registro.setSize(300,30);
+		username_registro.setFont(new Font("Arial", Font.BOLD, 22));
+		username_registro.setForeground(Color.WHITE);
+		username_registro.setLocation(30,90);
+		contenedorRegistro.add(username_registro);
+		
+		JLabel username_registro_text = new JLabel();
+		username_registro_text.setOpaque(true);
+		username_registro_text.setLocation(30,120);
+		username_registro_text.setSize(300,30);
+		username_registro_text.setFont(new Font("Arial", Font.BOLD, 22));
+		contenedorRegistro.add(username_registro_text);
+		
+		JLabel bio_tag = new JLabel("Biografía: ");
+		bio_tag.setBounds(30,170,250,40);
+		bio_tag.setHorizontalTextPosition(JLabel.CENTER);
+		bio_tag.setFont(new Font("Arial", Font.BOLD, 22));
+		bio_tag.setForeground(Color.WHITE);
+		contenedorRegistro.add(bio_tag);
+		
+		JTextArea bio_textarea = new JTextArea();
+		bio_textarea.setBounds(30,210,400,100);
+		bio_textarea.setFont(new Font("Arial", Font.BOLD, 22));
+		bio_textarea.setBackground(Color.WHITE);
+		contenedorRegistro.add(bio_textarea);
+		
+		JLabel therians_option = new JLabel("Sleccionar animales con los que te sientas identificado");
+		therians_option.setBounds(30,320,650,30);
+		therians_option.setFont(new Font("Arial", Font.BOLD, 20));
+		therians_option.setForeground(Color.WHITE);
+		contenedorRegistro.add(therians_option);
+		
+		JCheckBox checkbox1 = new JCheckBox("Gato");
+		checkbox1.setBounds(30, 370, 150, 30);
+		checkbox1.setOpaque(false);
+		checkbox1.setFont(new Font("Arial", Font.BOLD, 18));
+		checkbox1.setForeground(Color.WHITE);
+		contenedorRegistro.add(checkbox1);
+		
+		JCheckBox checkbox2 = new JCheckBox("Perro");
+		checkbox2.setBounds(150, 370, 200, 30);
+		checkbox2.setOpaque(false);
+		checkbox2.setFont(new Font("Arial", Font.BOLD, 18));
+		checkbox2.setForeground(Color.WHITE);
+		contenedorRegistro.add(checkbox2);
+		
+		JCheckBox checkbox3 = new JCheckBox("otro...");
+		checkbox3.setBounds(270, 370, 200, 30);
+		checkbox3.setOpaque(false);
+		checkbox3.setFont(new Font("Arial", Font.BOLD, 18));
+		checkbox3.setForeground(Color.WHITE);
+		contenedorRegistro.add(checkbox3);
+		
+		JRadioButton accept_terms = new JRadioButton("Acepto los terminos");
+		accept_terms.setBounds(30,400,150,50);
+		accept_terms.setOpaque(false);
+		accept_terms.setForeground(Color.WHITE);
+		contenedorRegistro.add(accept_terms);
+		
+		JRadioButton reject_terms = new JRadioButton("Acepto los terminos");
+		reject_terms.setBounds(170,400,150,50);
+		reject_terms.setOpaque(false);
+		reject_terms.setForeground(Color.WHITE);
+		contenedorRegistro.add(reject_terms);
+		
+		ButtonGroup terms = new ButtonGroup();
+		terms.add(reject_terms);
+		terms.add(accept_terms);
+		
+		String comida[] = {"pedigree","royale prestige","whiskas"};
+		
+		JLabel comida_text = new JLabel("Croquetas favoritas");
+		comida_text.setBounds(30,405,300,100);
+		comida_text.setForeground(Color.WHITE);
+		comida_text.setFont(new Font("Arial", Font.BOLD,22));
+		contenedorRegistro.add(comida_text);
+		
+		JComboBox list = new JComboBox(comida);
+		list.setBounds(30,470,100,20);
+		contenedorRegistro.add(list);
+		
+		JButton registrarse_boton = new JButton();
+		registrarse_boton.setText("Registrate");
+		registrarse_boton.setLocation(210, 490);
+		registrarse_boton.setSize(180, 40);
+		registrarse_boton.setFont(new Font("Arial", Font.BOLD,22));
+		contenedorRegistro.add(registrarse_boton);
+		
+		ImageIcon icon = new ImageIcon("src/public/therian_simbolo3.jpg");
+		JButton simbolo_therian = new JButton(icon);
+		simbolo_therian.setBounds(500,15,75,75);
+		contenedorRegistro.add(simbolo_therian);
+		
+		
+		
+		contenedorRegistro.repaint();
+		contenedorRegistro.revalidate();
+		
+		
 
 	
 		
