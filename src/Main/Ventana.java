@@ -11,6 +11,9 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
@@ -20,7 +23,6 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 public class Ventana extends JFrame {
 	public Ventana() {
-		this.setVisible(true);
 		this.setSize(600, 600);
 		this.setLocationRelativeTo(null);
 		this.setMinimumSize(new Dimension(200,200));
@@ -32,6 +34,52 @@ public class Ventana extends JFrame {
 		this.setLayout(null);
 		this.users();
 		this.getContentPane().setBackground(Color.BLACK);
+		
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.setBackground(Color.WHITE);
+		menuBar.setOpaque(true);
+		
+		JMenu archivo = new JMenu("Archivo");
+		
+		JMenuItem open = new JMenuItem("Abrir");
+		JMenuItem close = new JMenuItem("Cerrar");
+		JMenuItem save = new JMenuItem("Guardar");
+		JMenuItem newFile = new JMenuItem("Nuevo");
+		
+		menuBar.add(archivo);
+		
+		JMenu submenu = new JMenu("Otros");
+		archivo.addSeparator();
+		
+		
+		JMenuItem docs = new JMenuItem("Nuevo");
+		
+		submenu.add(docs);
+		
+		docs = new JMenuItem("otroitem");
+		submenu.add(docs);
+		archivo.add(submenu);
+		
+		
+		archivo.add(open);
+		archivo.add(close);
+		archivo.add(save);
+		archivo.add(newFile);
+		archivo.add(submenu);
+		
+	
+		
+		
+
+
+		
+		
+		this.setJMenuBar(menuBar);
+		
+		this.repaint();
+		this.revalidate();
+		this.setVisible(true);
+		
 		
 		
 	}		// TODO Auto-generated method stub
