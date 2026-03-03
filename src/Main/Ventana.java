@@ -45,6 +45,7 @@ public class Ventana extends JFrame {
 		JMenu archivo = new JMenu("Archivo");
 		archivo.setForeground(Color.WHITE);
 		
+		
 		JMenuItem open = new JMenuItem("Abrir");
 		JMenuItem close = new JMenuItem("Cerrar");
 		JMenuItem save = new JMenuItem("Guardar");
@@ -73,6 +74,15 @@ public class Ventana extends JFrame {
 		this.repaint();
 		this.revalidate();
 		this.setVisible(true);
+		
+		JLabel title_register = new JLabel();
+		title_register.setText("Registro");
+		title_register.setSize(200, 50);
+		title_register.setOpaque(false);
+		title_register.setLocation(200, 10);
+		title_register.setFont(new Font("Tahoma", Font.BOLD, 30));
+		title_register.setHorizontalAlignment(JLabel.CENTER);
+		title_register.setForeground(new Color(0, 180, 216));
 	}
 		
 	public void login() {
@@ -294,6 +304,15 @@ public class Ventana extends JFrame {
 		simbolo_therian.setBorder(new LineBorder(new Color(0, 180, 216)));
 		contenedorRegistro.add(simbolo_therian);
 		
+		JLabel title_login = new JLabel();
+		title_login.setText("Bienvenido");
+		title_login.setSize(200, 50);
+		title_login.setOpaque(false);
+		title_login.setLocation(190, 10);
+		title_login.setFont(new Font("Tahoma", Font.BOLD, 35));
+		title_login.setHorizontalAlignment(JLabel.CENTER);
+		title_login.setForeground(new Color(0, 180, 216));
+		
 		contenedorRegistro.repaint();
 		contenedorRegistro.revalidate();
 	}
@@ -311,6 +330,15 @@ public class Ventana extends JFrame {
 		users_title.setForeground(new Color(0, 180, 216));
 		users_title.setFont(new Font("Tahoma", Font.BOLD, 22));
 		users.add(users_title);
+		
+		JLabel title_login = new JLabel();
+		title_login.setText("Bienvenido");
+		title_login.setSize(200, 50);
+		title_login.setOpaque(false);
+		title_login.setLocation(190, 10);
+		title_login.setFont(new Font("Tahoma", Font.BOLD, 35));
+		title_login.setHorizontalAlignment(JLabel.CENTER);
+		title_login.setForeground(new Color(0, 180, 216));
 		
 		JLabel total_therians = new JLabel("Therians");
 		total_therians.setBounds(30,140,170,50);
@@ -372,11 +400,23 @@ public class Ventana extends JFrame {
 		table.setGridColor(new Color(0, 180, 216));
 		table.setRowHeight(25);
 		
+		JLabel title_register = new JLabel();
+		title_register.setText("Registro");
+		title_register.setSize(200, 50);
+		title_register.setOpaque(false);
+		title_register.setLocation(200, 10);
+		title_register.setFont(new Font("Tahoma", Font.BOLD, 30));
+		title_register.setHorizontalAlignment(JLabel.CENTER);
+		title_register.setForeground(new Color(0, 180, 216));
+		
+		
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.getViewport().setBackground(new Color(45, 45, 45));
 		scrollPane.setBorder(new LineBorder(new Color(0, 180, 216)));
 		scrollPane.setBounds(30,215,540,250);
-		users.add(scrollPane);			
+		users.add(scrollPane);	
+		
+		
 		
 		users.repaint();
 		users.revalidate();
