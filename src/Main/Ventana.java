@@ -1,5 +1,6 @@
 package Main;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -34,7 +35,7 @@ public class Ventana extends JFrame {
 		this.setLocation(100,100);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLayout(null);
-		this.login();
+		this.calculadora_interes();
 		this.getContentPane().setBackground(new Color(20, 20, 20));
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -385,4 +386,95 @@ public class Ventana extends JFrame {
 	public static void main(String[] args) {
 		new Ventana();
 	}
+	
+	public void calculadora_interes() {
+
+	JPanel panel = new JPanel();
+	panel.setSize(600,600);
+	panel.setLocation(0,0);
+	panel.setLayout(null);
+	panel.setBackground(new Color(220,200,120));
+	this.add(panel);
+
+	JLabel titulo = new JLabel("Interés");
+	titulo.setBounds(30,20,200,40);
+	titulo.setFont(new Font("Tahoma", Font.BOLD, 28));
+	titulo.setForeground(Color.RED);
+	panel.add(titulo);
+
+	JLabel subtitulo = new JLabel("Calcular Interés");
+	subtitulo.setBounds(40,70,200,30);
+	subtitulo.setFont(new Font("Tahoma", Font.BOLD,16));
+	panel.add(subtitulo);
+
+	JPanel caja = new JPanel();
+	caja.setLayout(null);
+	caja.setBounds(40,100,500,220);
+	caja.setBackground(new Color(140,220,140));
+	caja.setBorder(new LineBorder(new Color(120,200,120),3));
+	panel.add(caja);
+
+	JLabel capital = new JLabel("Capital:");
+	capital.setBounds(60,40,120,30);
+	capital.setFont(new Font("Tahoma", Font.BOLD,16));
+	caja.add(capital);
+
+	JTextField capital_text = new JTextField("1500");
+	capital_text.setBounds(170,40,180,30);
+	caja.add(capital_text);
+
+	JLabel tiempo = new JLabel("Tiempo:");
+	tiempo.setBounds(60,90,120,30);
+	tiempo.setFont(new Font("Tahoma", Font.BOLD,16));
+	caja.add(tiempo);
+
+	JTextField tiempo_text = new JTextField("2");
+	tiempo_text.setBounds(170,90,180,30);
+	caja.add(tiempo_text);
+
+	JLabel tasa = new JLabel("Tasa Interés:");
+	tasa.setBounds(60,140,120,30);
+	tasa.setFont(new Font("Tahoma", Font.BOLD,16));
+	caja.add(tasa);
+
+	JTextField tasa_text = new JTextField("0.1");
+	tasa_text.setBounds(170,140,180,30);
+	caja.add(tasa_text);
+
+	JButton calcular = new JButton("Calcular");
+	calcular.setBounds(120,180,120,30);
+	caja.add(calcular);
+
+	JButton cancelar = new JButton("Cancelar");
+	cancelar.setBounds(260,180,120,30);
+	caja.add(cancelar);
+
+	JPanel resultado = new JPanel();
+	resultado.setLayout(null);
+	resultado.setBounds(40,350,500,150);
+	resultado.setBackground(new Color(230,140,140));
+	panel.add(resultado);
+
+	JLabel interes = new JLabel("Interés:");
+	interes.setBounds(80,30,100,30);
+	interes.setFont(new Font("Tahoma", Font.BOLD,16));
+	resultado.add(interes);
+
+	JTextField interes_text = new JTextField("315");
+	interes_text.setBounds(170,30,180,30);
+	resultado.add(interes_text);
+
+	JLabel monto = new JLabel("Monto:");
+	monto.setBounds(80,80,100,30);
+	monto.setFont(new Font("Tahoma", Font.BOLD,16));
+	resultado.add(monto);
+
+	JTextField monto_text = new JTextField("1815");
+	monto_text.setBounds(170,80,180,30);
+	resultado.add(monto_text);
+
+	panel.repaint();
+	panel.revalidate();
 }
+	
+	}
