@@ -3,7 +3,9 @@ package Main;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridLayout;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -34,7 +36,7 @@ public class Ventana extends JFrame {
 		this.setBackground(new Color(20, 20, 20));
 		this.setLocation(100,100);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setLayout(null);
+		this.setLayout(new BorderLayout());
 		this.calculadora_interes();
 		this.getContentPane().setBackground(new Color(20, 20, 20));
 		
@@ -382,99 +384,98 @@ public class Ventana extends JFrame {
 		users.repaint();
 		users.revalidate();
 	}
+	public void calculadora_interes() {
+
+	this.setLayout(new BorderLayout());
+
+	JPanel contenedor = new JPanel(new BorderLayout());
+	contenedor.setBackground(Color.WHITE);
+	this.add(contenedor);
+
+	JLabel titulo = new JLabel("Calculando el Interés");
+	titulo.setFont(new Font("Tahoma", Font.BOLD, 26));
+	titulo.setHorizontalAlignment(JLabel.CENTER);
+	titulo.setForeground(Color.RED);
+	contenedor.add(titulo, BorderLayout.NORTH);
+
+	JPanel zonaCentral = new JPanel(new BorderLayout());
+	zonaCentral.setBackground(Color.WHITE);
+	contenedor.add(zonaCentral, BorderLayout.CENTER);
+
+	JLabel subtitulo = new JLabel("Interés");
+	subtitulo.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
+	subtitulo.setForeground(Color.RED);
+	subtitulo.setHorizontalAlignment(JLabel.LEFT);
+	zonaCentral.add(subtitulo, BorderLayout.NORTH);
+
+	JPanel centroWrap = new JPanel(new FlowLayout(FlowLayout.CENTER,40,20));
+	centroWrap.setBackground(Color.WHITE);
+	zonaCentral.add(centroWrap, BorderLayout.CENTER);
+
+	JPanel panelVerde = new JPanel(new BorderLayout(10,10));
+	panelVerde.setBackground(new Color(140,220,140));
+	panelVerde.setBorder(new LineBorder(new Color(120,200,120),3));
+	panelVerde.setPreferredSize(new Dimension(420,160));
+	centroWrap.add(panelVerde);
+
+	JPanel campos = new JPanel(new GridLayout(3,2,10,10));
+	campos.setBackground(new Color(140,220,140));
+
+	JLabel capital = new JLabel("Capital:");
+	JTextField capital_text = new JTextField("1500");
+
+	JLabel tiempo = new JLabel("Tiempo:");
+	JTextField tiempo_text = new JTextField("2");
+
+	JLabel tasa = new JLabel("Tasa Interés:");
+	JTextField tasa_text = new JTextField("0.1");
+
+	campos.add(capital);
+	campos.add(capital_text);
+	campos.add(tiempo);
+	campos.add(tiempo_text);
+	campos.add(tasa);
+	campos.add(tasa_text);
+
+	panelVerde.add(campos, BorderLayout.CENTER);
+
+	JPanel botones = new JPanel(new FlowLayout());
+	botones.setBackground(new Color(140,220,140));
+
+	JButton calcular = new JButton("Calcular");
+	JButton cancelar = new JButton("Cancelar");
+
+	botones.add(calcular);
+	botones.add(cancelar);
+
+	panelVerde.add(botones, BorderLayout.SOUTH);
+
+	JPanel surWrap = new JPanel(new FlowLayout(FlowLayout.CENTER,40,20));
+	surWrap.setBackground(Color.WHITE);
+	contenedor.add(surWrap, BorderLayout.SOUTH);
+
+	JPanel resultados = new JPanel(new GridLayout(2,2,10,10));
+	resultados.setBackground(new Color(230,140,140));
+	resultados.setPreferredSize(new Dimension(420,100));
+
+	JLabel interes = new JLabel("Interés:");
+	JTextField interes_text = new JTextField();
+
+	JLabel monto = new JLabel("Monto:");
+	JTextField monto_text = new JTextField();
+
+	resultados.add(interes);
+	resultados.add(interes_text);
+	resultados.add(monto);
+	resultados.add(monto_text);
+
+	surWrap.add(resultados);
+
+}
 	
 	public static void main(String[] args) {
 		new Ventana();
 	}
 	
-	public void calculadora_interes() {
-
-	JPanel panel = new JPanel();
-	panel.setSize(600,600);
-	panel.setLocation(0,0);
-	panel.setLayout(null);
-	panel.setBackground(new Color(220,200,120));
-	this.add(panel);
-
-	JLabel titulo = new JLabel("Interés");
-	titulo.setBounds(30,20,200,40);
-	titulo.setFont(new Font("Tahoma", Font.BOLD, 28));
-	titulo.setForeground(Color.RED);
-	panel.add(titulo);
-
-	JLabel subtitulo = new JLabel("Calcular Interés");
-	subtitulo.setBounds(40,70,200,30);
-	subtitulo.setFont(new Font("Tahoma", Font.BOLD,16));
-	panel.add(subtitulo);
-
-	JPanel caja = new JPanel();
-	caja.setLayout(null);
-	caja.setBounds(40,100,500,220);
-	caja.setBackground(new Color(140,220,140));
-	caja.setBorder(new LineBorder(new Color(120,200,120),3));
-	panel.add(caja);
-
-	JLabel capital = new JLabel("Capital:");
-	capital.setBounds(60,40,120,30);
-	capital.setFont(new Font("Tahoma", Font.BOLD,16));
-	caja.add(capital);
-
-	JTextField capital_text = new JTextField("1500");
-	capital_text.setBounds(170,40,180,30);
-	caja.add(capital_text);
-
-	JLabel tiempo = new JLabel("Tiempo:");
-	tiempo.setBounds(60,90,120,30);
-	tiempo.setFont(new Font("Tahoma", Font.BOLD,16));
-	caja.add(tiempo);
-
-	JTextField tiempo_text = new JTextField("2");
-	tiempo_text.setBounds(170,90,180,30);
-	caja.add(tiempo_text);
-
-	JLabel tasa = new JLabel("Tasa Interés:");
-	tasa.setBounds(60,140,120,30);
-	tasa.setFont(new Font("Tahoma", Font.BOLD,16));
-	caja.add(tasa);
-
-	JTextField tasa_text = new JTextField("0.1");
-	tasa_text.setBounds(170,140,180,30);
-	caja.add(tasa_text);
-
-	JButton calcular = new JButton("Calcular");
-	calcular.setBounds(120,180,120,30);
-	caja.add(calcular);
-
-	JButton cancelar = new JButton("Cancelar");
-	cancelar.setBounds(260,180,120,30);
-	caja.add(cancelar);
-
-	JPanel resultado = new JPanel();
-	resultado.setLayout(null);
-	resultado.setBounds(40,350,500,150);
-	resultado.setBackground(new Color(230,140,140));
-	panel.add(resultado);
-
-	JLabel interes = new JLabel("Interés:");
-	interes.setBounds(80,30,100,30);
-	interes.setFont(new Font("Tahoma", Font.BOLD,16));
-	resultado.add(interes);
-
-	JTextField interes_text = new JTextField("315");
-	interes_text.setBounds(170,30,180,30);
-	resultado.add(interes_text);
-
-	JLabel monto = new JLabel("Monto:");
-	monto.setBounds(80,80,100,30);
-	monto.setFont(new Font("Tahoma", Font.BOLD,16));
-	resultado.add(monto);
-
-	JTextField monto_text = new JTextField("1815");
-	monto_text.setBounds(170,80,180,30);
-	resultado.add(monto_text);
-
-	panel.repaint();
-	panel.revalidate();
-}
 	
 	}
