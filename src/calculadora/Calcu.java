@@ -1,5 +1,6 @@
 package calculadora;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -39,15 +40,22 @@ public class Calcu extends JFrame {
 		center_panel.setLayout(new GridLayout(4,4));
 		calculadoraScreen.add(center_panel);
 		
+		JPanel resultado_panel = new JPanel();
+		resultado_panel.setBounds(30, 30,510,100);
+		resultado_panel.setOpaque(true);
+		resultado_panel.setBackground(Color.BLACK);
+		resultado_panel.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
+		resultado_panel.setFont(new Font("Arial", Font.BOLD, 35));
+		resultado_panel.setForeground(Color.WHITE);
+		resultado_panel.setLayout(new BorderLayout());
+		calculadoraScreen.add(resultado_panel, BorderLayout.NORTH);
+		
 		
 		JLabel resultado = new JLabel(" 0");
-		resultado.setBounds(30,30,510,100);
-		resultado.setOpaque(true);
-		resultado.setBackground(Color.BLACK);
-		resultado.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
 		resultado.setFont(new Font("Arial", Font.BOLD, 35));
 		resultado.setForeground(Color.WHITE);
-		calculadoraScreen.add(resultado);
+		resultado.setHorizontalAlignment(JLabel.RIGHT);
+		resultado_panel.add(resultado, BorderLayout.CENTER);
 		
 		JButton boton1 = new JButton("7");
 		boton1.setSize(120,100);
