@@ -386,92 +386,92 @@ public class Ventana extends JFrame {
 	}
 	public void calculadora_interes() {
 
-	this.setLayout(new BorderLayout());
-
-	JPanel contenedor = new JPanel(new BorderLayout());
-	contenedor.setBackground(Color.WHITE);
-	this.add(contenedor);
-
-	JLabel titulo = new JLabel("Calculando el Interés");
-	titulo.setFont(new Font("Tahoma", Font.BOLD, 26));
-	titulo.setHorizontalAlignment(JLabel.CENTER);
-	titulo.setForeground(Color.RED);
-	contenedor.add(titulo, BorderLayout.NORTH);
-
-	JPanel zonaCentral = new JPanel(new BorderLayout());
-	zonaCentral.setBackground(Color.WHITE);
-	contenedor.add(zonaCentral, BorderLayout.CENTER);
-
-	JLabel subtitulo = new JLabel("Interés");
-	subtitulo.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
-	subtitulo.setForeground(Color.RED);
-	subtitulo.setHorizontalAlignment(JLabel.LEFT);
-	zonaCentral.add(subtitulo, BorderLayout.NORTH);
-
-	JPanel centroWrap = new JPanel(new FlowLayout(FlowLayout.CENTER,40,20));
-	centroWrap.setBackground(Color.WHITE);
-	zonaCentral.add(centroWrap, BorderLayout.CENTER);
-
-	JPanel panelVerde = new JPanel(new BorderLayout(10,10));
-	panelVerde.setBackground(new Color(140,220,140));
-	panelVerde.setBorder(new LineBorder(new Color(120,200,120),3));
-	panelVerde.setPreferredSize(new Dimension(420,160));
-	centroWrap.add(panelVerde);
-
-	JPanel campos = new JPanel(new GridLayout(3,2,10,10));
-	campos.setBackground(new Color(140,220,140));
-
-	JLabel capital = new JLabel("Capital:");
-	JTextField capital_text = new JTextField("1500");
-
-	JLabel tiempo = new JLabel("Tiempo:");
-	JTextField tiempo_text = new JTextField("2");
-
-	JLabel tasa = new JLabel("Tasa Interés:");
-	JTextField tasa_text = new JTextField("0.1");
-
-	campos.add(capital);
-	campos.add(capital_text);
-	campos.add(tiempo);
-	campos.add(tiempo_text);
-	campos.add(tasa);
-	campos.add(tasa_text);
-
-	panelVerde.add(campos, BorderLayout.CENTER);
-
-	JPanel botones = new JPanel(new FlowLayout());
-	botones.setBackground(new Color(140,220,140));
-
-	JButton calcular = new JButton("Calcular");
-	JButton cancelar = new JButton("Cancelar");
-
-	botones.add(calcular);
-	botones.add(cancelar);
-
-	panelVerde.add(botones, BorderLayout.SOUTH);
-
-	JPanel surWrap = new JPanel(new FlowLayout(FlowLayout.CENTER,40,20));
-	surWrap.setBackground(Color.WHITE);
-	contenedor.add(surWrap, BorderLayout.SOUTH);
-
-	JPanel resultados = new JPanel(new GridLayout(2,2,10,10));
-	resultados.setBackground(new Color(230,140,140));
-	resultados.setPreferredSize(new Dimension(420,100));
-
-	JLabel interes = new JLabel("Interés:");
-	JTextField interes_text = new JTextField();
-
-	JLabel monto = new JLabel("Monto:");
-	JTextField monto_text = new JTextField();
-
-	resultados.add(interes);
-	resultados.add(interes_text);
-	resultados.add(monto);
-	resultados.add(monto_text);
-
-	surWrap.add(resultados);
-
-}
+		this.setLayout(new BorderLayout());
+	
+		JPanel contenedor = new JPanel(new BorderLayout());
+		contenedor.setBackground(Color.WHITE);
+		this.add(contenedor);
+	
+		JLabel titulo = new JLabel("Calculando el Interés");
+		titulo.setFont(new Font("Tahoma", Font.BOLD, 26));
+		titulo.setHorizontalAlignment(JLabel.CENTER);
+		titulo.setForeground(Color.RED);
+		contenedor.add(titulo, BorderLayout.NORTH);
+	
+		JPanel zonaCentral = new JPanel(new BorderLayout());
+		zonaCentral.setBackground(Color.WHITE);
+		contenedor.add(zonaCentral, BorderLayout.CENTER);
+	
+		JLabel subtitulo = new JLabel("Interés");
+		subtitulo.setFont(new Font("Tahoma", Font.BOLD, 22));
+		subtitulo.setForeground(Color.RED);
+		subtitulo.setHorizontalAlignment(JLabel.LEFT);
+		zonaCentral.add(subtitulo, BorderLayout.NORTH);
+	
+		JPanel centroWrap = new JPanel(new FlowLayout(FlowLayout.CENTER,40,20));
+		centroWrap.setBackground(Color.WHITE);
+		zonaCentral.add(centroWrap, BorderLayout.CENTER);
+	
+		JPanel panelVerde = new JPanel(new BorderLayout(10,10));
+		panelVerde.setBackground(new Color(140,220,140));
+		panelVerde.setBorder(new LineBorder(new Color(120,200,120),3));
+		panelVerde.setPreferredSize(new Dimension(420,160));
+		centroWrap.add(panelVerde);
+	
+		JPanel campos = new JPanel(new GridLayout(3,2,10,10));
+		campos.setBackground(new Color(140,220,140));
+	
+		JLabel capital = new JLabel("Capital:");
+		JTextField capital_text = new JTextField("1500");
+	
+		JLabel tiempo = new JLabel("Tiempo:");
+		JTextField tiempo_text = new JTextField("2");
+	
+		JLabel tasa = new JLabel("Tasa Interés:");
+		JTextField tasa_text = new JTextField("0.1");
+	
+		campos.add(capital);
+		campos.add(capital_text);
+		campos.add(tiempo);
+		campos.add(tiempo_text);
+		campos.add(tasa);
+		campos.add(tasa_text);
+	
+		panelVerde.add(campos, BorderLayout.CENTER);
+	
+		JPanel botones = new JPanel(new FlowLayout());
+		botones.setBackground(new Color(140,220,140));
+	
+		JButton calcular = new JButton("Calcular");
+		JButton cancelar = new JButton("Cancelar");
+	
+		botones.add(calcular);
+		botones.add(cancelar);
+	
+		panelVerde.add(botones, BorderLayout.SOUTH);
+	
+		JPanel surWrap = new JPanel(new FlowLayout(FlowLayout.CENTER,40,20));
+		surWrap.setBackground(Color.WHITE);
+		contenedor.add(surWrap, BorderLayout.SOUTH);
+	
+		JPanel resultados = new JPanel(new GridLayout(2,2,10,10));
+		resultados.setBackground(new Color(230,140,140));
+		resultados.setPreferredSize(new Dimension(420,100));
+	
+		JLabel interes = new JLabel("Interés:");
+		JTextField interes_text = new JTextField();
+	
+		JLabel monto = new JLabel("Monto:");
+		JTextField monto_text = new JTextField();
+	
+		resultados.add(interes);
+		resultados.add(interes_text);
+		resultados.add(monto);
+		resultados.add(monto_text);
+	
+		surWrap.add(resultados);
+	
+	}
 	
 	public static void main(String[] args) {
 		new Ventana();
