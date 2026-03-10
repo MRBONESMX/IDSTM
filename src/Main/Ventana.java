@@ -6,6 +6,8 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.util.List;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -39,6 +41,9 @@ public class Ventana extends JFrame {
 		this.setLayout(new BorderLayout());
 		this.calculadora_interes();
 		this.getContentPane().setBackground(new Color(20, 20, 20));
+		
+		ImageIcon icon = new ImageIcon("src/public/therian_simbolo3.jpg");
+		this.setIconImage(icon.getImage());
 		
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBackground(new Color(40, 40, 40));
@@ -392,7 +397,7 @@ public class Ventana extends JFrame {
 		contenedor.setBackground(Color.WHITE);
 		this.add(contenedor);
 	
-		JLabel titulo = new JLabel("Calculando el Interés");
+		JLabel titulo = new JLabel("Calcular intereses");
 		titulo.setFont(new Font("Tahoma", Font.BOLD, 26));
 		titulo.setHorizontalAlignment(JLabel.CENTER);
 		titulo.setForeground(Color.RED);
@@ -402,7 +407,7 @@ public class Ventana extends JFrame {
 		zonaCentral.setBackground(Color.WHITE);
 		contenedor.add(zonaCentral, BorderLayout.CENTER);
 	
-		JLabel subtitulo = new JLabel("Interés");
+		JLabel subtitulo = new JLabel("Intereses");
 		subtitulo.setFont(new Font("Tahoma", Font.BOLD, 22));
 		subtitulo.setForeground(Color.RED);
 		subtitulo.setHorizontalAlignment(JLabel.LEFT);
@@ -427,7 +432,7 @@ public class Ventana extends JFrame {
 		JLabel tiempo = new JLabel("Tiempo:");
 		JTextField tiempo_text = new JTextField("2");
 	
-		JLabel tasa = new JLabel("Tasa Interés:");
+		JLabel tasa = new JLabel("Tasa interes:");
 		JTextField tasa_text = new JTextField("0.1");
 	
 		campos.add(capital);
@@ -458,7 +463,7 @@ public class Ventana extends JFrame {
 		resultados.setBackground(new Color(230,140,140));
 		resultados.setPreferredSize(new Dimension(420,100));
 	
-		JLabel interes = new JLabel("Interés:");
+		JLabel interes = new JLabel("Interes:");
 		JTextField interes_text = new JTextField();
 	
 		JLabel monto = new JLabel("Monto:");
