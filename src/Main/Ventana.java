@@ -1,10 +1,13 @@
 package Main;
 
+import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.util.List;
@@ -39,7 +42,7 @@ public class Ventana extends JFrame {
 		this.setLocation(100,100);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLayout(new BorderLayout());
-		this.calculadora_interes();
+		this.pintar();
 		this.getContentPane().setBackground(new Color(20, 20, 20));
 		
 		ImageIcon icon = new ImageIcon("src/public/therian_simbolo3.jpg");
@@ -476,6 +479,37 @@ public class Ventana extends JFrame {
 	
 		surWrap.add(resultados);
 	
+	}
+	public void pintar() {
+		 JPanel pane = new JPanel() {
+	            @Override
+	            protected void paintComponent(Graphics g) {
+	                super.paintComponent(g);
+	                Graphics2D g2d = (Graphics2D) g;
+	                
+	                
+	                g2d.drawLine(0, 0, 100, 100);
+	                g2d.setStroke(new BasicStroke(3));
+	                g2d.setColor(Color.red);
+	                g2d.drawLine(300, 200, 300, 250);
+	                g2d.setColor(new Color(150, 75, 0));
+	                g2d.fillRect(250, 250, 100, 100);
+	                g2d.fillOval(225, 100, 65, 65);
+	                g2d.fillOval(325, 100, 65, 65);
+	                g2d.setStroke(new BasicStroke(5));
+	                g2d.drawArc(30, 270, 100, 100, 0, 90);
+	                g2d.fillPolygon(new int[] {350, 350, 450}, new int[] {350, 450, 450}, 3);
+	                g2d.fillPolygon(new int[] {250, 250, 150}, new int[] {350, 450, 450}, 3);
+	                g2d.drawLine(100, 300, 500, 300);
+	                g2d.setColor(Color.GRAY);
+	                g2d.fillArc(500, 250, 100, 100, 45, 270);
+	                
+	                g2d.fillArc(20, 250, 100, 100, 220, 270);
+	            }
+	        };
+	     pane.setSize(600, 600);
+	     pane.setLocation(0, 0);
+	     this.add(pane);
 	}
 	
 	public static void main(String[] args) {
