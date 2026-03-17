@@ -10,8 +10,11 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 
+import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -42,7 +45,7 @@ public class Ventana extends JFrame {
 		this.setLocation(100,100);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLayout(new BorderLayout());
-		this.la_casa_del_boiler();
+		this.login();
 		this.getContentPane().setBackground(new Color(20, 20, 20));
 		
 		ImageIcon icon = new ImageIcon("src/public/therian_simbolo3.jpg");
@@ -160,6 +163,26 @@ public class Ventana extends JFrame {
 		acceder.setFocusPainted(false);
 		acceder.setBorder(null);
 		contenedor.add(acceder);
+		
+		acceder.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+				String username_val = username.getText();
+				if (username_val.equals("")) {
+					username.setBorder(BorderFactory.createLineBorder(Color.red));
+				} else {
+					username.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+				}
+				char[] password_val = password.getPassword();
+				if (password_val.length == 0) {
+					password.setBorder(BorderFactory.createLineBorder(Color.red));
+				} else {
+					password.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+				}
+			}});
 		
 		JCheckBox cajita = new JCheckBox("Recordarme");
 		cajita.setBounds(30, 280, 150, 30);
