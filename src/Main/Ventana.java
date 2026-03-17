@@ -42,7 +42,7 @@ public class Ventana extends JFrame {
 		this.setLocation(100,100);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLayout(new BorderLayout());
-		this.pintar();
+		this.la_casa_del_boiler();
 		this.getContentPane().setBackground(new Color(20, 20, 20));
 		
 		ImageIcon icon = new ImageIcon("src/public/therian_simbolo3.jpg");
@@ -510,6 +510,70 @@ public class Ventana extends JFrame {
 	     pane.setSize(600, 600);
 	     pane.setLocation(0, 0);
 	     this.add(pane);
+	}
+	
+	public void la_casa_del_boiler () {
+		this.setBackground(Color.blue);
+		JPanel pane = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                Graphics2D g2d = (Graphics2D) g;
+                g2d.setColor(Color.cyan);
+                g2d.fillRect(0,0,600,600);
+             
+                g2d.setStroke(new BasicStroke(3));
+                g2d.setColor(Color.orange);
+                g2d.fillRect(100, 100, 400, 350);
+                g2d.setColor(new Color(150, 75, 0));
+                g2d.fillRect(310, 250, 100, 200);
+                g2d.setColor(Color.gray);
+                g2d.fillOval(390, 340, 10, 10);
+                g2d.setColor(Color.white);
+                g2d.fillRect(130, 250, 100, 130);
+                g2d.setColor(Color.black);
+                g2d.fillOval(120, 240, 120, 15);
+                g2d.fillOval(120, 370, 120, 15);
+                g2d.setStroke(new BasicStroke(5));
+                g2d.drawLine(215, 240, 215, 200);
+                g2d.setStroke(new BasicStroke(5));
+                g2d.fillPolygon(new int[] {80, 520, 300}, new int[] {100, 100, 0}, 3);
+                g2d.setStroke(new BasicStroke(3));
+                g2d.setColor(Color.red);
+                g2d.drawLine(170,270,170,350);
+                g2d.fillArc(143, 269, 50, 50, 270, 180);
+                g2d.fillArc(143, 315, 50, 50, 270, 180);
+                g2d.setColor(new Color(150, 75, 0));
+                g2d.fillRect(0,400,310, 15);
+                g2d.fillRect(0,470,310, 15);
+                g2d.fillRect(400,400,310, 15);
+                g2d.fillRect(400,470,310, 15);
+                g2d.fillRect(0,370,15, 150);
+                g2d.fillRect(50,370,15, 150);
+                g2d.fillRect(100,370,15, 150);
+                g2d.fillRect(150,370,15, 150);
+                g2d.fillRect(200,370,15, 150);
+                g2d.fillRect(250,370,15, 150);
+                g2d.fillRect(300,370,15, 150);
+                g2d.fillRect(400,370,15, 150);
+                g2d.fillRect(450,370,15, 150);
+                g2d.fillRect(500,370,15, 150);
+                g2d.fillRect(550,370,15, 150);
+
+                
+
+                
+
+                
+
+
+                
+            }
+        };
+     pane.setSize(600, 600);
+     pane.setLocation(0, 0);
+     this.add(pane);
+		
 	}
 	
 	public static void main(String[] args) {
