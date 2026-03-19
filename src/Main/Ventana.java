@@ -25,6 +25,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
@@ -169,19 +170,32 @@ public class Ventana extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				
 				String username_val = username.getText();
-				if (username_val.equals("")) {
-					username.setBorder(BorderFactory.createLineBorder(Color.red));
-				} else {
-					username.setBorder(BorderFactory.createLineBorder(Color.GREEN));
-				}
-				char[] password_val = password.getPassword();
-				if (password_val.length == 0) {
-					password.setBorder(BorderFactory.createLineBorder(Color.red));
-				} else {
-					password.setBorder(BorderFactory.createLineBorder(Color.GREEN));
-				}
+			    String password_val = new String(password.getPassword());
+
+			    
+			    String usernameCorrecto = "therian";
+			    String passwordCorrecta = "1234";
+
+			   
+			    if (username_val.equals("")) {
+			        username.setBorder(BorderFactory.createLineBorder(Color.red));
+			    } else {
+			        username.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+			    }
+
+			    if (password_val.equals("")) {
+			        password.setBorder(BorderFactory.createLineBorder(Color.red));
+			    } else {
+			        password.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+			    }
+
+			 
+			    if (username_val.equals(usernameCorrecto) && password_val.equals(passwordCorrecta)) {
+			        JOptionPane.showMessageDialog(null, "Bienvenido usuario");
+			    } else {
+			        JOptionPane.showMessageDialog(null, "Correo o contraseña incorrectos");
+			    }
 			}});
 		
 		JCheckBox cajita = new JCheckBox("Recordarme");
@@ -201,7 +215,7 @@ public class Ventana extends JFrame {
  		
 		contenedor.repaint();
 		contenedor.revalidate();
-	}
+		}
 	
 	public void registro() {
 		JPanel contenedorRegistro = new JPanel();
