@@ -46,7 +46,7 @@ public class Ventana extends JFrame {
 		this.setLocation(100,100);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLayout(new BorderLayout());
-		this.login();
+		this.router("login");
 		this.getContentPane().setBackground(new Color(20, 20, 20));
 		
 		ImageIcon icon = new ImageIcon("src/public/therian_simbolo3.jpg");
@@ -60,12 +60,19 @@ public class Ventana extends JFrame {
 		JMenu archivo = new JMenu("Archivo");
 		archivo.setForeground(Color.WHITE);
 		
-		JMenuItem open = new JMenuItem("Abrir");
-		JMenuItem close = new JMenuItem("Cerrar");
+		JMenuItem login = new JMenuItem("Login");
+		JMenuItem registro = new JMenuItem("Registro");
 		JMenuItem save = new JMenuItem("Guardar");
 		JMenuItem newFile = new JMenuItem("Nuevo");
 		
 		menuBar.add(archivo);
+		
+		login.addActionListener(e -> {
+			this.router("login");
+		});
+		registro.addActionListener(e -> {
+			this.router("registro");
+		});
 		
 		JMenu submenu = new JMenu("Otros");
 		archivo.addSeparator();
@@ -77,8 +84,8 @@ public class Ventana extends JFrame {
 		submenu.add(docs);
 		archivo.add(submenu);
 		
-		archivo.add(open);
-		archivo.add(close);
+		archivo.add(login);
+		archivo.add(registro);
 		archivo.add(save);
 		archivo.add(newFile);
 		archivo.add(submenu);
@@ -197,6 +204,24 @@ public class Ventana extends JFrame {
 			        JOptionPane.showMessageDialog(null, "Correo o contraseña incorrectos");
 			    }
 			}});
+		
+		JButton registrarse = new JButton();
+		registrarse.setText("Registrarse");
+		registrarse.setLocation(200, 450);
+		registrarse.setSize(180, 45);
+		registrarse.setFont(new Font("Tahoma", Font.BOLD, 20));
+		registrarse.setOpaque(false);
+		registrarse.setContentAreaFilled(false);
+		registrarse.setForeground(Color.WHITE);
+		contenedor.add(registrarse);
+		
+		registrarse.addActionListener(e -> {
+			this.router("registro");
+			
+		});
+			
+		
+		
 		
 		JCheckBox cajita = new JCheckBox("Recordarme");
 		cajita.setBounds(30, 280, 150, 30);
@@ -341,6 +366,17 @@ public class Ventana extends JFrame {
 		simbolo_therian.setBackground(new Color(45, 45, 45));
 		simbolo_therian.setBorder(new LineBorder(new Color(0, 180, 216)));
 		contenedorRegistro.add(simbolo_therian);
+		
+		JButton volver_login = new JButton("Volver al login");
+		volver_login.setBounds(395, 490, 180, 40);
+		volver_login.setFont(new Font("Tahoma", Font.BOLD,18));
+		volver_login.setOpaque(false);
+		volver_login.setContentAreaFilled(false);
+		contenedorRegistro.add(volver_login);
+		
+		volver_login.addActionListener(e ->{
+			this.router("login");
+		});
 		
 		contenedorRegistro.repaint();
 		contenedorRegistro.revalidate();
@@ -611,6 +647,17 @@ public class Ventana extends JFrame {
      pane.setLocation(0, 0);
      this.add(pane);
 		
+	}
+	public void router(String  target) {
+		this.getContentPane().removeAll();
+		if (target.equals("login")) {
+			this.login();
+		}
+		if (target.equals("registro")) {
+			this.registro();
+		}
+		this.repaint();
+		this.revalidate();
 	}
 	
 	public static void main(String[] args) {
