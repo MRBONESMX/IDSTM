@@ -804,7 +804,7 @@ public class Ventana extends JFrame {
 		tabla.setGridColor(new Color(0,180,216));
 
 		JScrollPane scroll = new JScrollPane(tabla);
-		scroll.setBounds(20,300,550,150);
+		scroll.setBounds(20,300,550,115);
 		scroll.setBorder(new LineBorder(new Color(0,180,216)));
 		contenedor.add(scroll);
 
