@@ -46,7 +46,7 @@ public class Ventana extends JFrame {
 		this.setLocation(100,100);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLayout(new BorderLayout());
-		this.router("login");
+		this.factura();
 		this.getContentPane().setBackground(new Color(20, 20, 20));
 		
 		ImageIcon icon = new ImageIcon("src/public/therian_simbolo3.jpg");
@@ -658,6 +658,214 @@ public class Ventana extends JFrame {
 		}
 		this.repaint();
 		this.revalidate();
+	}
+	
+	public void factura() {
+		JPanel contenedor = new JPanel();
+		contenedor.setLayout(null);
+		contenedor.setBackground(new Color(20,20,20));
+		contenedor.setBounds(0,0,600,600);
+		this.add(contenedor);
+
+		JLabel titulo = new JLabel("Registro de facturación personal - Sebastian Amir");
+		titulo.setBounds(20,10,500,30);
+		titulo.setForeground(new Color(0,180,216));
+		titulo.setFont(new Font("Tahoma", Font.BOLD, 16));
+		contenedor.add(titulo);
+
+		
+
+		JPanel cliente = new JPanel();
+		cliente.setLayout(null);
+		cliente.setBounds(20,70,550,100);
+		cliente.setBackground(new Color(30,30,30));
+		cliente.setBorder(new LineBorder(new Color(0,180,216)));
+		contenedor.add(cliente);
+
+		JLabel doc = new JLabel("Documento:");
+		doc.setBounds(10,10,100,25);
+		doc.setForeground(Color.WHITE);
+		cliente.add(doc);
+
+		JTextField doc_txt = new JTextField("123456");
+		doc_txt.setBounds(110,10,120,25);
+		cliente.add(doc_txt);
+
+		JLabel nombre = new JLabel("Nombres:");
+		nombre.setBounds(260,10,100,25);
+		nombre.setForeground(Color.WHITE);
+		cliente.add(nombre);
+
+		JTextField nombre_txt = new JTextField("Sebastian Amir");
+		nombre_txt.setBounds(340,10,150,25);
+		cliente.add(nombre_txt);
+
+		JLabel dir = new JLabel("Dirección:");
+		dir.setBounds(10,50,100,25);
+		dir.setForeground(Color.WHITE);
+		cliente.add(dir);
+
+		JTextField dir_txt = new JTextField("Calle opalina 3232");
+		dir_txt.setBounds(110,50,120,25);
+		cliente.add(dir_txt);
+
+		JLabel tel = new JLabel("Teléfono:");
+		tel.setBounds(260,50,100,25);
+		tel.setForeground(Color.WHITE);
+		cliente.add(tel);
+
+		JTextField tel_txt = new JTextField("6122200450");
+		tel_txt.setBounds(340,50,150,25);
+		cliente.add(tel_txt);
+
+		JPanel factura = new JPanel();
+		factura.setLayout(null);
+		factura.setBounds(20,180,550,60);
+		factura.setBackground(new Color(30,30,30));
+		factura.setBorder(new LineBorder(new Color(0,180,216)));
+		contenedor.add(factura);
+
+		JLabel num = new JLabel("N° Factura:");
+		num.setBounds(10,10,100,25);
+		num.setForeground(Color.WHITE);
+		factura.add(num);
+
+		JLabel num_val = new JLabel("1");
+		num_val.setBounds(100,10,50,25);
+		num_val.setForeground(Color.WHITE);
+		factura.add(num_val);
+
+		JLabel fecha = new JLabel("Fecha:");
+		fecha.setBounds(250,10,100,25);
+		fecha.setForeground(Color.WHITE);
+		factura.add(fecha);
+		
+		JLabel fecha_val = new JLabel("23/03/2026");
+		fecha_val.setBounds(310,10,150,25);
+		fecha_val.setForeground(Color.WHITE);
+		factura.add(fecha_val);
+				
+		JPanel acciones = new JPanel();
+		acciones.setLayout(null);
+		acciones.setBounds(20,250,550,40);
+		acciones.setBackground(new Color(20,20,20));
+		contenedor.add(acciones);
+		
+		ImageIcon listado_image = new ImageIcon("src/public/list-ico.png");
+		Image listado_img = listado_image.getImage().getScaledInstance(20,20,Image.SCALE_SMOOTH);
+		listado_image = new ImageIcon(listado_img);
+		
+		JButton listado = new JButton("Desplegar listado");
+		listado.setBounds(0,5,140,30);
+		listado.setBackground(new Color(45,45,45));
+		listado.setForeground(Color.WHITE);
+		listado.setBorder(new LineBorder(new Color(80,80,80)));
+		listado.setIcon(listado_image);
+		acciones.add(listado);
+		
+		ImageIcon add_image = new ImageIcon("src/public/add-ico.png");
+		Image add_img = add_image.getImage().getScaledInstance(20,20,Image.SCALE_SMOOTH);
+		add_image = new ImageIcon(add_img);
+		
+		JButton agregar = new JButton("Añadir");
+		agregar.setBounds(350,5,90,30);
+		agregar.setBackground(new Color(0,180,216));
+		agregar.setForeground(Color.WHITE);
+		agregar.setBorder(null);
+		agregar.setIcon(add_image);
+		acciones.add(agregar);
+		
+		ImageIcon eliminar_image = new ImageIcon("src/public/delete-ico.png");
+		Image eliminar_img = eliminar_image.getImage().getScaledInstance(20,20,Image.SCALE_SMOOTH);
+		eliminar_image = new ImageIcon(eliminar_img);
+		
+		JButton eliminar = new JButton("Eliminar");
+		eliminar.setBounds(450,5,100,30);
+		eliminar.setBackground(new Color(200,60,60));
+		eliminar.setForeground(Color.WHITE);
+		eliminar.setBorder(null);
+		eliminar.setIcon(eliminar_image);
+		acciones.add(eliminar);
+
+		String[] head = {"Producto","Cantidad","Valor","Sub Total"};
+		String[][] data = {
+			{"Agua","2","500","1000"},
+			{"Cereal","5","1000","5000"},
+			{"Leche","2","300","600"},
+			{"Galletas","3","200","600"},
+			{"Desodorante","1","500","500"},
+			{"Shampoo","1","500","500"}
+		};
+
+		JTable tabla = new JTable(data, head);
+		tabla.setBackground(new Color(45,45,45));
+		tabla.setForeground(Color.WHITE);
+		tabla.setRowHeight(25);
+		tabla.setGridColor(new Color(0,180,216));
+
+		JScrollPane scroll = new JScrollPane(tabla);
+		scroll.setBounds(20,300,550,150);
+		scroll.setBorder(new LineBorder(new Color(0,180,216)));
+		contenedor.add(scroll);
+
+		JLabel subtotal = new JLabel("SubTotal:");
+		subtotal.setBounds(20,420,100,25);
+		subtotal.setForeground(Color.WHITE);
+		contenedor.add(subtotal);
+
+		JLabel subtotal_val = new JLabel("6600.00");
+		subtotal_val.setBounds(120,420,100,25);
+		subtotal_val.setForeground(Color.WHITE);
+		contenedor.add(subtotal_val);
+
+		JLabel desc = new JLabel("% Descuento:");
+		desc.setBounds(20,450,120,25);
+		desc.setForeground(Color.WHITE);
+		contenedor.add(desc);
+
+		JTextField desc_txt = new JTextField("5");
+		desc_txt.setBounds(140,450,50,25);
+		contenedor.add(desc_txt);
+
+		JCheckBox check = new JCheckBox();
+		check.setBounds(200,450,20,25);
+		check.setOpaque(false);
+		contenedor.add(check);
+
+		JLabel val_desc = new JLabel("Valor descontado: 330.00");
+		val_desc.setBounds(240,450,200,25);
+		val_desc.setForeground(Color.WHITE);
+		contenedor.add(val_desc);
+
+		JLabel iva = new JLabel("IVA 19%:");
+		iva.setBounds(20,480,100,25);
+		iva.setForeground(Color.WHITE);
+		contenedor.add(iva);
+
+		JLabel iva_val = new JLabel("1254.00");
+		iva_val.setBounds(120,480,100,25);
+		iva_val.setForeground(Color.WHITE);
+		contenedor.add(iva_val);
+
+		JLabel total = new JLabel("Total Factura:");
+		total.setBounds(20,510,120,25);
+		total.setForeground(Color.WHITE);
+		contenedor.add(total);
+
+		JLabel total_val = new JLabel("7524.00");
+		total_val.setBounds(140,510,100,25);
+		total_val.setForeground(Color.WHITE);
+		contenedor.add(total_val);
+
+		JButton finalizar = new JButton("Finalizar factura");
+		finalizar.setBounds(350,500,180,35);
+		finalizar.setBackground(new Color(0,180,216));
+		finalizar.setForeground(Color.WHITE);
+		finalizar.setBorder(null);
+		contenedor.add(finalizar);
+
+		contenedor.repaint();
+		contenedor.revalidate();
 	}
 	
 	public static void main(String[] args) {
