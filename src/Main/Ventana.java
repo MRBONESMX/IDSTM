@@ -52,45 +52,7 @@ public class Ventana extends JFrame {
 		ImageIcon icon = new ImageIcon("src/public/therian_simbolo3.jpg");
 		this.setIconImage(icon.getImage());
 		
-		JMenuBar menuBar = new JMenuBar();
-		menuBar.setBackground(new Color(40, 40, 40));
-		menuBar.setBorder(new LineBorder(new Color(0, 180, 216)));
-		menuBar.setOpaque(true);
-		
-		JMenu archivo = new JMenu("Archivo");
-		archivo.setForeground(Color.WHITE);
-		
-		JMenuItem login = new JMenuItem("Login");
-		JMenuItem registro = new JMenuItem("Registro");
-		JMenuItem save = new JMenuItem("Guardar");
-		JMenuItem newFile = new JMenuItem("Nuevo");
-		
-		menuBar.add(archivo);
-		
-		login.addActionListener(e -> {
-			this.router("login");
-		});
-		registro.addActionListener(e -> {
-			this.router("registro");
-		});
-		
-		JMenu submenu = new JMenu("Otros");
-		archivo.addSeparator();
-		
-		JMenuItem docs = new JMenuItem("Nuevo");
-		submenu.add(docs);
-		
-		docs = new JMenuItem("otroitem");
-		submenu.add(docs);
-		archivo.add(submenu);
-		
-		archivo.add(login);
-		archivo.add(registro);
-		archivo.add(save);
-		archivo.add(newFile);
-		archivo.add(submenu);
-		
-		this.setJMenuBar(menuBar);
+		this.menu();
 		
 		this.repaint();
 		this.revalidate();
@@ -648,17 +610,6 @@ public class Ventana extends JFrame {
      this.add(pane);
 		
 	}
-	public void router(String  target) {
-		this.getContentPane().removeAll();
-		if (target.equals("login")) {
-			this.login();
-		}
-		if (target.equals("registro")) {
-			this.registro();
-		}
-		this.repaint();
-		this.revalidate();
-	}
 	
 	public void factura() {
 		JPanel contenedor = new JPanel();
@@ -868,6 +819,21 @@ public class Ventana extends JFrame {
 		contenedor.revalidate();
 	}
 	
+	public void recovery() {
+		JPanel contenedor = new JPanel();
+		contenedor.setLayout(null);
+		contenedor.setBackground(new Color(20,20,20));
+		contenedor.setBounds(0,0,600,600);
+		this.add(contenedor);
+
+		JLabel title = new JLabel("Recuperar contraseña");
+		title.setBounds(20,10,500,30);
+		title.setForeground(new Color(0,180,216));
+		title.setFont(new Font("Tahoma", Font.BOLD, 16));
+		contenedor.add(title);
+
+	}
+	
 	public void mario() {
 			 JPanel pane = new JPanel() {
 		            @Override
@@ -1041,6 +1007,245 @@ public class Ventana extends JFrame {
 		     pane.setLocation(0, 0);
 		     this.add(pane);
 	}
+	public void alta() {
+		JPanel contenedor = new JPanel();
+		contenedor.setLayout(null);
+		contenedor.setBackground(new Color(20,20,20));
+		contenedor.setBounds(0,0,600,600);
+		this.add(contenedor);
+
+		JLabel title = new JLabel("Alta de usuario");
+		title.setBounds(20,10,500,30);
+		title.setForeground(new Color(0,180,216));
+		title.setFont(new Font("Tahoma", Font.BOLD, 16));
+		contenedor.add(title);
+		
+		contenedor.repaint();
+		contenedor.revalidate();
+	}
+	public void baja() {
+		JPanel contenedor = new JPanel();
+		contenedor.setLayout(null);
+		contenedor.setBackground(new Color(20,20,20));
+		contenedor.setBounds(0,0,600,600);
+		this.add(contenedor);
+
+		JLabel title = new JLabel("Baja de usuario");
+		title.setBounds(20,10,500,30);
+		title.setForeground(new Color(0,180,216));
+		title.setFont(new Font("Tahoma", Font.BOLD, 16));
+		contenedor.add(title);
+		
+		contenedor.repaint();
+		contenedor.revalidate();
+	}
+	
+	public void consultar() {
+		JPanel contenedor = new JPanel();
+		contenedor.setLayout(null);
+		contenedor.setBackground(new Color(20,20,20));
+		contenedor.setBounds(0,0,600,600);
+		this.add(contenedor);
+
+		JLabel title = new JLabel("Consultar usuarios");
+		title.setBounds(20,10,500,30);
+		title.setForeground(new Color(0,180,216));
+		title.setFont(new Font("Tahoma", Font.BOLD, 16));
+		contenedor.add(title);
+		
+		contenedor.repaint();
+		contenedor.revalidate();
+	}
+	
+	public void router(String  target) {
+		this.getContentPane().removeAll();
+		if (target.equals("login")) {
+			this.login();
+		}
+		if (target.equals("registro")) {
+			this.registro();
+		}
+		if (target.equals("recovery")) {
+			this.recovery();
+		}
+		if (target.equals("alta")) {
+			this.alta();
+		}
+		if (target.equals("baja")) {
+			this.baja();
+		}
+		if (target.equals("consultar")) {
+			this.consultar();
+		}
+		if (target.equals("crearUsuarioA")) {
+			this.crearUsuario();
+		}
+		if (target.equals("accederSistema")) {
+			this.accederSistema();
+		}
+		if (target.equals("olvidarContrasena")) {
+			this.olvidarContrasena();
+		}
+		this.repaint();
+		this.revalidate();
+	}
+	
+	public void crearUsuario() {
+		JPanel contenedor = new JPanel();
+		contenedor.setLayout(null);
+		contenedor.setBackground(new Color(20,20,20));
+		contenedor.setBounds(0,0,600,600);
+		this.add(contenedor);
+
+		JLabel title = new JLabel("¿Cómo crear un usuario?");
+		title.setBounds(20,10,500,30);
+		title.setForeground(new Color(0,180,216));
+		title.setFont(new Font("Tahoma", Font.BOLD, 16));
+		contenedor.add(title);
+		
+		contenedor.repaint();
+		contenedor.revalidate();
+	}
+	public void accederSistema() {
+		JPanel contenedor = new JPanel();
+		contenedor.setLayout(null);
+		contenedor.setBackground(new Color(20,20,20));
+		contenedor.setBounds(0,0,600,600);
+		this.add(contenedor);
+
+		JLabel title = new JLabel("¿Cómo acceder al sistema?");
+		title.setBounds(20,10,500,30);
+		title.setForeground(new Color(0,180,216));
+		title.setFont(new Font("Tahoma", Font.BOLD, 16));
+		contenedor.add(title);
+		
+		contenedor.repaint();
+		contenedor.revalidate();
+	}
+	
+	public void olvidarContrasena() {
+		JPanel contenedor = new JPanel();
+		contenedor.setLayout(null);
+		contenedor.setBackground(new Color(20,20,20));
+		contenedor.setBounds(0,0,600,600);
+		this.add(contenedor);
+
+		JLabel title = new JLabel("¿Qué hacer si olvidé mi contraseña?");
+		title.setBounds(20,10,500,30);
+		title.setForeground(new Color(0,180,216));
+		title.setFont(new Font("Tahoma", Font.BOLD, 16));
+		contenedor.add(title);
+		
+		contenedor.repaint();
+		contenedor.revalidate();
+	}
+	
+	public void menu() {
+		
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.setBackground(new Color(40, 40, 40));
+		menuBar.setBorder(new LineBorder(new Color(0, 180, 216)));
+		menuBar.setOpaque(true);
+		
+		JMenu archivo = new JMenu("Archivo");
+		archivo.setForeground(Color.WHITE);
+		
+		JMenuItem login = new JMenuItem("Login");
+		JMenuItem registro = new JMenuItem("Registro");
+		JMenuItem save = new JMenuItem("Guardar");
+		JMenuItem newFile = new JMenuItem("Nuevo");
+		
+		menuBar.add(archivo);
+		
+		login.addActionListener(e -> {
+			this.router("login");
+		});
+		registro.addActionListener(e -> {
+			this.router("registro");
+		});
+		
+		JMenu submenu = new JMenu("Otros");
+		archivo.addSeparator();
+		
+		JMenuItem docs = new JMenuItem("Nuevo");
+		submenu.add(docs);
+		
+		docs = new JMenuItem("otroitem");
+		submenu.add(docs);
+		archivo.add(submenu);
+		
+		archivo.add(login);
+		archivo.add(registro);
+		archivo.add(save);
+		archivo.add(newFile);
+		archivo.add(submenu);
+		
+		this.setJMenuBar(menuBar);
+		
+		JMenu account_menu = new JMenu("Cuenta");
+		account_menu.setForeground(Color.WHITE);
+		menuBar.add(account_menu);
+			
+		JMenuItem login_item = new JMenuItem("Acceder");
+		login_item.addActionListener(e ->{
+			this.router("login");
+		});
+		JMenuItem registro_item = new JMenuItem("Registro");
+		registro_item.addActionListener(e ->{
+			this.router("registro");
+		});
+		JMenuItem recover_item = new JMenuItem("Recuperación de cuenta");
+		recover_item.addActionListener(e ->{
+			this.router("recovery");
+		});
+		
+		JMenu usuarios_menu = new JMenu("usuarios");
+		usuarios_menu.setForeground(Color.WHITE);
+		menuBar.add(usuarios_menu);
+		
+		JMenuItem alta_item = new JMenuItem("Alta");
+		alta_item.addActionListener(e ->{
+			this.router("alta");
+		});
+		JMenuItem baja_item = new JMenuItem("baja");
+		baja_item.addActionListener(e ->{
+			this.router("baja");
+		});
+		JMenuItem consultar_item = new JMenuItem("Consultar");
+		consultar_item.addActionListener(e ->{
+			this.router("consultar");
+		});
+		
+		JMenu ayuda_menu = new JMenu("Ayuda");
+		ayuda_menu.setForeground(Color.WHITE);
+		menuBar.add(ayuda_menu);
+		
+		JMenuItem crear_usuario_item = new JMenuItem("¿Cómo crear un usuario?");
+		crear_usuario_item.addActionListener(e ->{
+			this.router("crearUsuarioA");
+		});
+		JMenuItem acceder_Sistema_item = new JMenuItem("¿Cómo acceder al sistema?");
+		acceder_Sistema_item.addActionListener(e ->{
+			this.router("accederSistema");
+		});
+		JMenuItem olvidar_contraseña_item = new JMenuItem("¿Qué pasa si olvidé mi contraseña?");
+		olvidar_contraseña_item.addActionListener(e ->{
+			this.router("olvidarContrasena");
+		});
+		
+		account_menu.add(login_item);
+		account_menu.add(registro_item);
+		account_menu.add(recover_item);
+		
+		usuarios_menu.add(alta_item);
+		usuarios_menu.add(baja_item);
+		usuarios_menu.add(consultar_item);
+		
+		ayuda_menu.add(crear_usuario_item);
+		ayuda_menu.add(acceder_Sistema_item);
+		ayuda_menu.add(olvidar_contraseña_item);
+
+		}
 		                
 	
 	
