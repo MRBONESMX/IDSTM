@@ -37,7 +37,7 @@ import javax.swing.border.LineBorder;
 
 public class Ventana extends JFrame {
 	public Ventana() {
-		this.setSize(1200, 600);
+		this.setSize(600, 600);
 		this.setLocationRelativeTo(null);
 		this.setMinimumSize(new Dimension(200,200));
 		this.setMaximumSize(new Dimension(700,700));
@@ -46,7 +46,7 @@ public class Ventana extends JFrame {
 		this.setLocation(100,100);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLayout(new BorderLayout());
-		this.mario();
+		this.alta();
 		this.getContentPane().setBackground(new Color(20, 20, 20));
 		
 		ImageIcon icon = new ImageIcon("src/public/therian_simbolo3.jpg");
@@ -831,6 +831,20 @@ public class Ventana extends JFrame {
 		title.setForeground(new Color(0,180,216));
 		title.setFont(new Font("Tahoma", Font.BOLD, 16));
 		contenedor.add(title);
+		
+		JLabel email = new JLabel("Correo electrónico:");
+		email.setBounds(20,70,150,25);
+		email.setForeground(Color.WHITE);
+		contenedor.add(email);
+		
+		JTextField email_txt = new JTextField();
+		email_txt.setBounds(170,70,210,25);
+		contenedor.add(email_txt);
+		
+		JButton enviar = new JButton("Enviar correo de recuperación");
+		enviar.setBounds(170,110,210,30);
+		enviar.setBackground(new Color(0,180,216));
+		contenedor.add(enviar);
 
 	}
 	
@@ -1020,6 +1034,60 @@ public class Ventana extends JFrame {
 		title.setFont(new Font("Tahoma", Font.BOLD, 16));
 		contenedor.add(title);
 		
+		JLabel nombre = new JLabel("Nombre de tu therian: ");
+		nombre.setBounds(20,70,150,25);
+		nombre.setForeground(Color.WHITE);
+		contenedor.add(nombre);
+		
+		JTextField nombre_txt = new JTextField();
+		nombre_txt.setBounds(170,70,150,25);
+		contenedor.add(nombre_txt);
+		
+		JLabel email = new JLabel("Correo electronico: ");
+		email.setBounds(20,110,150,25);
+		email.setForeground(Color.WHITE);
+		contenedor.add(email);
+		
+		JTextField email_txt = new JTextField();
+		email_txt.setBounds(170,110,150,25);
+		contenedor.add(email_txt);
+		
+		JLabel raza = new JLabel("Ingresa tu Raza: ");
+		raza.setBounds(20, 150, 150, 25);
+		raza.setForeground(Color.WHITE);
+		contenedor.add(raza);
+		
+		JComboBox lista_raza = new JComboBox(new String[] {"Gato", "Perro", "Lobo", "Zorro", "Otro"});
+		lista_raza.setBounds(170,150,150,25);
+		contenedor.add(lista_raza);
+		
+		JLabel comida = new JLabel("Ingresa tu comida: ");
+		comida.setBounds(20, 180, 150, 25);
+		comida.setForeground(Color.WHITE);
+		contenedor.add(comida);
+		
+		JComboBox lista_comida = new JComboBox(new String[] {"Whiskas", "Royal Prestige", "Pedigree", "Otro"});
+		lista_comida.setBounds(170,180,150,25);
+		contenedor.add(lista_comida);
+		
+		JLabel edad = new JLabel("Ingresa tu edad: ");
+		edad.setBounds(20, 210, 150, 25);
+		edad.setForeground(Color.WHITE);
+		contenedor.add(edad);
+		
+		JTextField edad_txt = new JTextField();
+		edad_txt.setBounds(170,210, 30, 25 );
+		contenedor.add(edad_txt);
+		
+		JButton alta_boton = new JButton("Registrar");
+		alta_boton.setBounds(170,240, 150, 25);
+		alta_boton.setForeground(Color.white);
+		alta_boton.setBackground(new Color(0, 180, 216));
+		contenedor.add(alta_boton);
+		
+		
+		
+		
 		contenedor.repaint();
 		contenedor.revalidate();
 	}
@@ -1075,7 +1143,7 @@ public class Ventana extends JFrame {
 			this.baja();
 		}
 		if (target.equals("consultar")) {
-			this.consultar();
+			this.users();
 		}
 		if (target.equals("crearUsuarioA")) {
 			this.crearUsuario();
@@ -1103,6 +1171,27 @@ public class Ventana extends JFrame {
 		title.setFont(new Font("Tahoma", Font.BOLD, 16));
 		contenedor.add(title);
 		
+		JTextArea recuperar_txt = new JTextArea(
+				"Para recuperar una cuenta, primero se debe acceder a la opción de " +
+				"\"¿Olvidaste tu contraseña?\" o \"Recuperar cuenta\" que aparece en la " +
+				"página de inicio de sesión. Después, se solicita ingresar el correo " +
+				"electrónico, número telefónico o nombre de usuario asociado a la cuenta. " +
+				"Una vez proporcionada esta información, el sistema enviará un código de " +
+				"verificación o un enlace de recuperación que permitirá restablecer la " +
+				"contraseña. Es importante crear una nueva contraseña segura, combinando " +
+				"letras, números y símbolos, para proteger la cuenta. Finalmente, se " +
+				"recomienda guardar la nueva contraseña en un lugar seguro para evitar " +
+				"futuros inconvenientes."
+				);
+		recuperar_txt.setEditable(false);
+		recuperar_txt.setLineWrap(true);
+		recuperar_txt.setWrapStyleWord(true);
+		recuperar_txt.setOpaque(false);
+		recuperar_txt.setBorder(null);
+		recuperar_txt.setForeground(Color.WHITE);
+		recuperar_txt.setBounds(20,70,550,200);
+		contenedor.add(recuperar_txt);
+		
 		contenedor.repaint();
 		contenedor.revalidate();
 	}
@@ -1118,6 +1207,25 @@ public class Ventana extends JFrame {
 		title.setForeground(new Color(0,180,216));
 		title.setFont(new Font("Tahoma", Font.BOLD, 16));
 		contenedor.add(title);
+		
+		JTextArea recuperar_txt = new JTextArea(
+				"Para acceder al sistema, primero se debe ingresar a la página de inicio de sesión. " +
+				"En esta página, se deben proporcionar las credenciales de acceso, que generalmente " +
+				"consisten en un nombre de usuario o correo electrónico y una contraseña. Después de " +
+				"ingresar esta información, se debe hacer clic en el botón de inicio de sesión o " +
+				"presionar la tecla Enter. Si las credenciales son correctas, el sistema permitirá " +
+				"el acceso al usuario y lo redirigirá a la página principal o al panel de control. " +
+				"Es importante asegurarse de ingresar las credenciales correctamente para evitar " +
+				"problemas de acceso."
+				);
+		recuperar_txt.setEditable(false);
+		recuperar_txt.setLineWrap(true);
+		recuperar_txt.setWrapStyleWord(true);
+		recuperar_txt.setOpaque(false);
+		recuperar_txt.setBorder(null);
+		recuperar_txt.setForeground(Color.WHITE);
+		recuperar_txt.setBounds(20,70,550,200);
+		contenedor.add(recuperar_txt);
 		
 		contenedor.repaint();
 		contenedor.revalidate();
@@ -1135,6 +1243,23 @@ public class Ventana extends JFrame {
 		title.setForeground(new Color(0,180,216));
 		title.setFont(new Font("Tahoma", Font.BOLD, 16));
 		contenedor.add(title);
+		
+		JTextArea recuperar_txt = new JTextArea(
+				"Si olvidaste tu contraseña, puedes recuperarla siguiendo estos pasos: " +
+				"\n 1. Ve a la página de inicio de sesión y haz clic en el enlace \"¿Olvidaste tu contraseña?\" o \"Recuperar cuenta\". " +
+				"\n 2. Ingresa tu correo electrónico, número telefónico o nombre de usuario asociado a tu cuenta. " +
+				"\n 3. Recibirás un código de verificación o un enlace de recuperación en tu correo electrónico o teléfono. " +
+				"\n 4. Sigue las instrucciones proporcionadas para restablecer tu contraseña. " +
+				"\n 5. Crea una nueva contraseña segura y guárdala en un lugar seguro para evitar futuros inconvenientes."
+				);
+		recuperar_txt.setEditable(false);
+		recuperar_txt.setLineWrap(true);
+		recuperar_txt.setWrapStyleWord(true);
+		recuperar_txt.setOpaque(false);
+		recuperar_txt.setBorder(null);
+		recuperar_txt.setForeground(Color.WHITE);
+		recuperar_txt.setBounds(20,70,550,200);
+		contenedor.add(recuperar_txt);
 		
 		contenedor.repaint();
 		contenedor.revalidate();
