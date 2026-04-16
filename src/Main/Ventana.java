@@ -37,6 +37,7 @@ import javax.swing.border.LineBorder;
 
 public class Ventana extends JFrame {
 	public Ventana() {
+
 		this.setSize(600, 600);
 		this.setLocationRelativeTo(null);
 		this.setMinimumSize(new Dimension(200,200));
@@ -46,7 +47,7 @@ public class Ventana extends JFrame {
 		this.setLocation(100,100);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLayout(new BorderLayout());
-		this.alta();
+		this.tommy_Y_Yerry_Y_El_Gato();
 		this.getContentPane().setBackground(new Color(20, 20, 20));
 		
 		ImageIcon icon = new ImageIcon("src/public/therian_simbolo3.jpg");
@@ -1373,6 +1374,39 @@ public class Ventana extends JFrame {
 		}
 		                
 	
+	public void tommy_Y_Yerry_Y_El_Gato() {
+		JPanel contenedor = new JPanel();
+		contenedor.setLayout(new GridLayout(3,3));
+		contenedor.setBackground(new Color(20,20,20));
+		contenedor.setBounds(0,0,600,600);
+		this.add(contenedor);
+		
+		JButton b1 = new JButton();
+		JButton b2 = new JButton();
+		JButton b3 = new JButton();
+		JButton b4 = new JButton();
+		JButton b5 = new JButton();
+		JButton b6 = new JButton();
+		JButton b7 = new JButton();
+		JButton b8 = new JButton();
+		JButton b9 = new JButton();
+		
+		Font fuente = new Font("Tahoma", Font.BOLD, 40);
+		
+		JButton[] botones = {b1,b2,b3,b4,b5,b6,b7,b8,b9};
+		
+		for(int i = 0; i < botones.length; i++){
+			JButton b = botones[i];
+			b.setFont(fuente);
+			b.setBackground(new Color(45,45,45));
+			b.setForeground(Color.WHITE);
+			b.setBorder(new LineBorder(new Color(0,180,216),2));
+			contenedor.add(b);
+		}
+		
+		contenedor.repaint();
+		contenedor.revalidate();
+	}
 	
 	
 	public static void main(String[] args) {
