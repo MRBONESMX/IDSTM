@@ -36,6 +36,8 @@ import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
 public class Ventana extends JFrame {
+	int id=0;
+	String password="";  
 	public Ventana() {
 
 		this.setSize(600, 600);
@@ -97,7 +99,7 @@ public class Ventana extends JFrame {
 		contenedor.add(username);
 		
 		JLabel username_text = new JLabel();
-		username_text.setText("Username: ");
+		username_text.setText("id: ");
 		username_text.setSize(200,30);
 		username_text.setFont(new Font("Tahoma", Font.BOLD, 18));
 		username_text.setOpaque(false);
@@ -105,7 +107,7 @@ public class Ventana extends JFrame {
 		username_text.setForeground(new Color(200, 200, 200));
 		contenedor.add(username_text);
 		
-		JPasswordField password = new JPasswordField();
+		JTextField password = new JTextField();
 		password.setSize(300, 35);
 		password.setLocation(30, 240);
 		password.setFont(new Font("Tahoma", Font.PLAIN, 18));
@@ -135,38 +137,31 @@ public class Ventana extends JFrame {
 		acceder.setBorder(null);
 		contenedor.add(acceder);
 		
-		acceder.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+		acceder.addActionListener(e -> {
 				String username_val = username.getText();
-			    String password_val = new String(password.getPassword());
+				int id_ingresado = 0;
+				if(username_val.length() > 0){
+					id_ingresado = Integer.parseInt(username_val);
+				}
+			    String password_val = new String(password.getText());
 
 			    
-			    String usernameCorrecto = "therian";
-			    String passwordCorrecta = "1234";
+			    int usernameCorrecto = this.id;
+			    String passwordCorrecta = this.password;
 
-			   
-			    if (username_val.equals("")) {
-			        username.setBorder(BorderFactory.createLineBorder(Color.red));
-			    } else {
-			        username.setBorder(BorderFactory.createLineBorder(Color.GREEN));
-			    }
-
-			    if (password_val.equals("")) {
-			        password.setBorder(BorderFactory.createLineBorder(Color.red));
-			    } else {
-			        password.setBorder(BorderFactory.createLineBorder(Color.GREEN));
-			    }
 
 			 
-			    if (username_val.equals(usernameCorrecto) && password_val.equals(passwordCorrecta)) {
-			        JOptionPane.showMessageDialog(null, "Bienvenido usuario");
+			    if (id_ingresado == usernameCorrecto && password_val.equals(passwordCorrecta)) {
+			    	 	password.setBorder(new LineBorder(new Color(0, 180, 216)));
+				    username.setBorder(new LineBorder(new Color(0, 180, 216)));
+			    		JOptionPane.showMessageDialog(null, "Bienvenido usuario");    
 			    } else {
-			        JOptionPane.showMessageDialog(null, "Correo o contraseña incorrectos");
+			    	 	password.setBorder(BorderFactory.createLineBorder(Color.red));
+			    	 	username.setBorder(BorderFactory.createLineBorder(Color.red));
+			        JOptionPane.showMessageDialog(null, "id o contraseña incorrectos");
+			       
 			    }
-			}});
+		});
 		
 		JButton registrarse = new JButton();
 		registrarse.setText("Registrarse");
@@ -203,6 +198,8 @@ public class Ventana extends JFrame {
  		
 		contenedor.repaint();
 		contenedor.revalidate();
+		
+		
 		}
 	
 	public void registro() {
@@ -343,6 +340,133 @@ public class Ventana extends JFrame {
 		
 		contenedorRegistro.repaint();
 		contenedorRegistro.revalidate();
+	}
+	
+	public void loginid() {
+		JPanel contenedor = new JPanel();
+		contenedor.setOpaque(true);
+		contenedor.setBackground(new Color(20, 20, 20));
+		contenedor.setSize(600,600);
+		contenedor.setLocation(0, 0);
+		this.add(contenedor);
+		contenedor.setLayout(null);
+		
+		JLabel title_login = new JLabel();
+		title_login.setText("Bienvenido");
+		title_login.setSize(200, 50);
+		title_login.setOpaque(false);
+		title_login.setLocation(190, 10);
+		title_login.setFont(new Font("Tahoma", Font.BOLD, 35));
+		title_login.setHorizontalAlignment(JLabel.CENTER);
+		title_login.setForeground(new Color(0, 180, 216));
+		contenedor.add(title_login);
+		
+		ImageIcon icon = new ImageIcon("src/public/therian_simbolo3.jpg");
+		JButton simbolo_therian = new JButton(icon);
+		simbolo_therian.setBounds(400,5,75,75);
+		simbolo_therian.setBackground(new Color(45, 45, 45));
+		simbolo_therian.setBorder(new LineBorder(new Color(0, 180, 216)));
+		contenedor.add(simbolo_therian);
+		
+		JTextField username = new JTextField();
+		username.setSize(300, 35);
+		username.setLocation(30, 150);
+		username.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		username.setBackground(new Color(45, 45, 45));
+		username.setForeground(Color.WHITE);
+		username.setCaretColor(Color.WHITE);
+		username.setBorder(new LineBorder(new Color(0, 180, 216)));
+		contenedor.add(username);
+		
+		JLabel username_text = new JLabel();
+		username_text.setText("Ingresa el id a registrar: ");
+		username_text.setSize(250,30);
+		username_text.setFont(new Font("Tahoma", Font.BOLD, 18));
+		username_text.setOpaque(false);
+		username_text.setLocation(30,120);
+		username_text.setForeground(new Color(200, 200, 200));
+		contenedor.add(username_text);
+		
+		JTextField password = new JTextField();
+		password.setSize(300, 35);
+		password.setLocation(30, 240);
+		password.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		password.setBackground(new Color(45, 45, 45));
+		password.setForeground(Color.WHITE);
+		password.setCaretColor(Color.WHITE);
+		password.setBorder(new LineBorder(new Color(0, 180, 216)));
+		contenedor.add(password);
+		
+		JLabel password_text= new JLabel();
+		password_text.setText("Ingresa la contraseña a registrar: ");
+		password_text.setSize(320,30);
+		password_text.setFont(new Font("Tahoma", Font.BOLD, 18));
+		password_text.setOpaque(false);
+		password_text.setLocation(30,210);
+		password_text.setForeground(new Color(200, 200, 200));
+		contenedor.add(password_text);
+	
+		JButton acceder = new JButton();
+		acceder.setText("Registrar");
+		acceder.setLocation(200, 400);
+		acceder.setSize(180, 45);
+		acceder.setFont(new Font("Tahoma", Font.BOLD, 20));
+		acceder.setBackground(new Color(0, 180, 216));
+		acceder.setForeground(Color.WHITE);
+		acceder.setFocusPainted(false);
+		acceder.setBorder(null);
+		contenedor.add(acceder);
+		
+		acceder.addActionListener(e -> {
+				String username_val = username.getText();
+				if(username_val.length() > 0){
+					this.id = Integer.parseInt(username_val);
+				}
+			    this.password = new String(password.getText());
+
+			    
+			    if (String.valueOf(this.id).length() < 6){
+			    	 	username.setBorder(BorderFactory.createLineBorder(Color.red));
+			        JOptionPane.showMessageDialog(null, "El id ingresado es menor a 6 digitos");
+			    }	
+			    else if (this.password.length() < 8 && this.password.length()==0) {
+			    	 	password.setBorder(BorderFactory.createLineBorder(Color.red));
+			        JOptionPane.showMessageDialog(null, "La contraseña ingresada es menor a 8 digitos o fue dejada en blanco");
+			 
+			    }else if(String.valueOf(this.id).length() >= 6 && this.password.length() >= 8){
+				    	password.setBorder(new LineBorder(new Color(0, 180, 216)));
+					username.setBorder(new LineBorder(new Color(0, 180, 216)));
+			    		JOptionPane.showMessageDialog(null, "Registro exitoso");
+			    		this.router("login");
+			    }else {
+			    	 	password.setBorder(BorderFactory.createLineBorder(Color.red));
+			    	 	username.setBorder(BorderFactory.createLineBorder(Color.red));
+			        JOptionPane.showMessageDialog(null, "Rellene los campos correctamente");
+			    }
+		});
+		
+		
+			
+		
+		
+		
+		JCheckBox cajita = new JCheckBox("Recordarme");
+		cajita.setBounds(30, 280, 150, 30);
+		cajita.setOpaque(false);
+		cajita.setForeground(Color.WHITE);
+		contenedor.add(cajita);
+		
+		JLabel forgot_password = new JLabel("¿Olvidó su contraseña?");
+		forgot_password.setLocation(160,280);
+		forgot_password.setSize(170,30);
+		forgot_password.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		forgot_password.setHorizontalAlignment(JLabel.RIGHT);
+		forgot_password.setOpaque(false);
+		forgot_password.setForeground(new Color(0, 180, 216));
+		contenedor.add(forgot_password);
+ 		
+		contenedor.repaint();
+		contenedor.revalidate();
 	}
 
 	public void users() {
@@ -1375,38 +1499,19 @@ public class Ventana extends JFrame {
 		                
 	
 	public void tommy_Y_Yerry_Y_El_Gato() {
-		JPanel contenedor = new JPanel();
-		contenedor.setLayout(new GridLayout(3,3));
-		contenedor.setBackground(new Color(20,20,20));
-		contenedor.setBounds(0,0,600,600);
-		this.add(contenedor);
-		
-		JButton b1 = new JButton();
-		JButton b2 = new JButton();
-		JButton b3 = new JButton();
-		JButton b4 = new JButton();
-		JButton b5 = new JButton();
-		JButton b6 = new JButton();
-		JButton b7 = new JButton();
-		JButton b8 = new JButton();
-		JButton b9 = new JButton();
-		
-		Font fuente = new Font("Tahoma", Font.BOLD, 40);
-		
-		JButton[] botones = {b1,b2,b3,b4,b5,b6,b7,b8,b9};
-		
-		for(int i = 0; i < botones.length; i++){
-			JButton b = botones[i];
-			b.setFont(fuente);
-			b.setBackground(new Color(45,45,45));
-			b.setForeground(Color.WHITE);
-			b.setBorder(new LineBorder(new Color(0,180,216),2));
-			contenedor.add(b);
-		}
-		
-		contenedor.repaint();
-		contenedor.revalidate();
-	}
+    JPanel contenedor = new JPanel();
+    contenedor.setLayout(null);                      // null para posicionar con setBounds
+    contenedor.setBackground(new Color(20, 20, 20));
+    contenedor.setBounds(0, 0, 600, 600);
+    this.add(contenedor);
+ 
+    // se crea el juego y se construye la vista dentro del mismo panel
+    JuegoGato juego = new JuegoGato(contenedor);
+    juego.construirVista(contenedor);
+ 
+    contenedor.repaint();
+    contenedor.revalidate();
+}
 	
 	
 	public static void main(String[] args) {
