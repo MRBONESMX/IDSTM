@@ -1500,13 +1500,12 @@ public class Ventana extends JFrame {
 	
 	public void tommy_Y_Yerry_Y_El_Gato() {
     JPanel contenedor = new JPanel();
-    contenedor.setLayout(null);                      // null para posicionar con setBounds
+    contenedor.setLayout(null);                      
     contenedor.setBackground(new Color(20, 20, 20));
     contenedor.setBounds(0, 0, 600, 600);
     this.add(contenedor);
  
-    // se crea el juego y se construye la vista dentro del mismo panel
-    JuegoGato juego = new JuegoGato(contenedor);
+    TareaGato juego = new TareaGato(contenedor);
     juego.construirVista(contenedor);
  
     contenedor.repaint();

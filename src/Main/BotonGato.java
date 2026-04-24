@@ -8,7 +8,7 @@ import javax.swing.border.LineBorder;
 public class BotonGato extends JButton {
 
     int posicion;
-    String estado; // "" = vacío, "X" o "O"
+    String estado; 
 
     public BotonGato(int posicion) {
         this.posicion = posicion;
