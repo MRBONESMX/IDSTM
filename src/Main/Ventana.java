@@ -49,7 +49,7 @@ public class Ventana extends JFrame {
 		this.setLocation(100,100);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLayout(new BorderLayout());
-		this.tommy_Y_Yerry_Y_El_Gato();
+		this.loginid();
 		this.getContentPane().setBackground(new Color(20, 20, 20));
 		
 		ImageIcon icon = new ImageIcon("src/public/therian_simbolo3.jpg");
