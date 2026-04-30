@@ -16,15 +16,18 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
 import controllers.AuthController;
+import models.AuthModel;
 
-public class AuthView {
-	int id=0;
-	String password=""; 
+public class AuthView { 
+	int id=123456; 
+	String password="123456"; 
 	
 	public void loginView() {
 		JFrame frame = new JFrame();
@@ -120,25 +123,19 @@ public class AuthView {
 		acceder.setFocusPainted(false);
 		acceder.setBorder(null);
 		contenedor.add(acceder);
-		
+		AuthModel authModel = new AuthModel();
 		acceder.addActionListener(e -> {
 				String username_val = username.getText();
-				int id_ingresado = 0;
-				if(username_val.length() > 0){
-					id_ingresado = Integer.parseInt(username_val);
-				}
 			    String password_val = new String(password.getText());
 
 			    
-			    int usernameCorrecto = this.id;
-			    String passwordCorrecta = this.password;
-
-
+			    
+			    
 			 
-			    if (id_ingresado == usernameCorrecto && password_val.equals(passwordCorrecta)) {
-			    	 	password.setBorder(new LineBorder(new Color(0, 180, 216)));
-				    username.setBorder(new LineBorder(new Color(0, 180, 216)));
-			    		JOptionPane.showMessageDialog(null, "Bienvenido usuario");    
+			    if (authModel.login(username_val, password_val)) {
+			    		AuthController authController = new AuthController();
+				    frame.dispose();
+				    authController.showHome();
 			    } else {
 			    	 	password.setBorder(BorderFactory.createLineBorder(Color.red));
 			    	 	username.setBorder(BorderFactory.createLineBorder(Color.red));
@@ -342,6 +339,103 @@ public class AuthView {
 		frame.setVisible(true);
 		contenedorRegistro.repaint();
 		contenedorRegistro.revalidate();
+	}
+	
+	public void homeView(){
+		JFrame frame = new JFrame();
+		frame.setSize(600, 600);
+		frame.setLocationRelativeTo(null);
+		frame.setMinimumSize(new Dimension(200,200));
+		frame.setMaximumSize(new Dimension(700,700));
+		frame.setTitle("Pagina web de Therians (Ranking)");
+		frame.setBackground(new Color(20, 20, 20));
+		frame.setLocation(100,100);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setLayout(new BorderLayout());
+		frame.getContentPane().setBackground(new Color(20, 20, 20));
+		
+		JPanel users = new JPanel();
+		users.setSize(600,600);
+		users.setLocation(0,0);
+		users.setBackground(new Color(20, 20, 20));
+		users.setLayout(null);
+		frame.add(users);
+		
+		JLabel users_title = new JLabel("Lista de therians global");
+		users_title.setBounds(30,20,300,30);
+		users_title.setForeground(new Color(0, 180, 216));
+		users_title.setFont(new Font("Tahoma", Font.BOLD, 22));
+		users.add(users_title);
+		
+		JLabel total_therians = new JLabel("Therians");
+		total_therians.setBounds(30,140,170,50);
+		total_therians.setForeground(Color.WHITE);
+		total_therians.setBackground(new Color(45, 45, 45));
+		total_therians.setOpaque(true);
+		total_therians.setHorizontalAlignment(JLabel.CENTER);
+		total_therians.setBorder(new LineBorder(new Color(0, 180, 216)));
+		total_therians.setFont(new Font("Tahoma", Font.BOLD, 18));
+		users.add(total_therians);
+		
+		JLabel num_therians = new JLabel("100");
+		num_therians.setBounds(55,175,100,30);
+		num_therians.setForeground(new Color(0, 180, 216));
+		num_therians.setFont(new Font("Tahoma", Font.BOLD, 22));
+		users.add(num_therians);
+		
+		JButton export = new JButton("Exportar");
+		export.setBounds(365, 150, 100, 35);
+		export.setBackground(new Color(45, 45, 45));
+		export.setForeground(Color.WHITE);
+		export.setBorder(new LineBorder(new Color(80, 80, 80)));
+		users.add(export);
+		
+		JButton add = new JButton("Añadir");
+		add.setBounds(475, 150, 100, 35);
+		add.setBackground(new Color(0, 180, 216));
+		add.setForeground(Color.WHITE);
+		add.setBorder(null);
+		users.add(add);
+		
+		String [] table_head = {"therian","nombre", "apellido", "raza", "edad", "comida fav"};
+		String[][] table_contend = {
+				    {"gato", "Simba", "Torres", "fino", "6", "whiskas"},
+				    {"perro", "Bruno", "Flores", "calle", "8", "pedigree"},
+				    {"gato", "Nala", "Cruz", "fino", "1", "whiskas"},
+				    {"perro", "Zeus", "Morales", "fino", "5", "royaleprestige"},
+				    {"perro", "Lucas", "Reyes", "calle", "3", "pedigree"},
+				    {"gato", "Michi", "Vargas", "calle", "4", "whiskas"},
+				    {"perro", "Thor", "Jiménez", "fino", "6", "royaleprestige"},
+				    {"gato", "Kira", "Navarro", "fino", "2", "whiskas"},
+				    {"perro", "Bobby", "Ortega", "calle", "9", "pedigree"},
+				    {"gato", "Salem", "Rojas", "fino", "7", "whiskas"},
+				    {"perro", "Chester", "Mendoza", "fino", "4", "royaleprestige"},
+				    {"gato", "Pelusa", "Aguilar", "calle", "5", "whiskas"},
+				    {"perro", "Firulais", "Santos", "calle", "10", "pedigree"},
+				    {"gato", "Tom", "Pineda", "fino", "3", "whiskas"},
+				    {"perro", "Apolo", "Castillo", "fino", "2", "royaleprestige"},
+				    {"gato", "Maya", "Fuentes", "fino", "6", "whiskas"},
+				    {"perro", "Rex", "Valdez", "calle", "7", "pedigree"},
+				    {"gato", "Lola", "Peña", "calle", "4", "whiskas"},
+				    {"perro", "Duke", "Salazar", "fino", "5", "royaleprestige"},
+				    {"gato", "Canela", "Mejía", "fino", "2", "whiskas"}
+				};
+			
+		JTable table = new JTable(table_contend, table_head);
+		table.setBackground(new Color(45, 45, 45));
+		table.setForeground(Color.WHITE);
+		table.setGridColor(new Color(0, 180, 216));
+		table.setRowHeight(25);
+		
+		JScrollPane scrollPane = new JScrollPane(table);
+		scrollPane.getViewport().setBackground(new Color(45, 45, 45));
+		scrollPane.setBorder(new LineBorder(new Color(0, 180, 216)));
+		scrollPane.setBounds(30,215,540,250);
+		users.add(scrollPane);	
+		
+		users.repaint();
+		users.revalidate();
+		frame.setVisible(true);
 	}
 	
 

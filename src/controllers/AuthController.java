@@ -19,6 +19,11 @@ public class AuthController {
 		vista.registroView();
 	}
 	
+	public void showHome() {
+		vista.homeView();
+	}
+	
+	
 
 	public static void main(String[] args) {
 		AuthController authController = new AuthController();
