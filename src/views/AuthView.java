@@ -226,28 +226,43 @@ public class AuthView {
 		username_registro.setLocation(30,90);
 		contenedorRegistro.add(username_registro);
 		
-		JLabel username_registro_text = new JLabel();
+		JTextField username_registro_text = new JTextField();
 		username_registro_text.setOpaque(true);
 		username_registro_text.setBackground(new Color(45, 45, 45));
 		username_registro_text.setLocation(30,120);
 		username_registro_text.setSize(300,30);
 		username_registro_text.setBorder(new LineBorder(new Color(0, 180, 216)));
 		username_registro_text.setFont(new Font("Tahoma", Font.BOLD, 16));
+		username_registro_text.setForeground(Color.WHITE);
 		contenedorRegistro.add(username_registro_text);
 		
-		JLabel bio_tag = new JLabel("Biografía: ");
+		JLabel bio_tag = new JLabel("Contraseña: ");
 		bio_tag.setBounds(30,170,250,40);
 		bio_tag.setFont(new Font("Tahoma", Font.BOLD, 16));
 		bio_tag.setForeground(Color.WHITE);
 		contenedorRegistro.add(bio_tag);
 		
-		JTextArea bio_textarea = new JTextArea();
-		bio_textarea.setBounds(30,210,400,100);
-		bio_textarea.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		bio_textarea.setBackground(new Color(45, 45, 45));
-		bio_textarea.setForeground(Color.WHITE);
-		bio_textarea.setBorder(new LineBorder(new Color(80, 80, 80)));
-		contenedorRegistro.add(bio_textarea);
+		JTextField password = new JTextField();
+		password.setBounds(30,210,200,20);
+		password.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		password.setBackground(new Color(45, 45, 45));
+		password.setForeground(Color.WHITE);
+		password.setBorder(new LineBorder(new Color(80, 80, 80)));
+		contenedorRegistro.add(password);
+		
+		JLabel email_label = new JLabel("email: ");
+		email_label.setBounds(30,250,250,40);
+		email_label.setFont(new Font("Tahoma", Font.BOLD, 16));
+		email_label.setForeground(Color.WHITE);
+		contenedorRegistro.add(email_label);
+		
+		JTextField email = new JTextField();
+		email.setBounds(30,280,200,20);
+		email.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		email.setBackground(new Color(45, 45, 45));
+		email.setForeground(Color.WHITE);
+		email.setBorder(new LineBorder(new Color(80, 80, 80)));
+		contenedorRegistro.add(email);
 		
 		JLabel therians_option = new JLabel("Seleccionar animales con los que te sientas identificado");
 		therians_option.setBounds(30,320,650,30);
@@ -315,6 +330,58 @@ public class AuthView {
 		registrarse_boton.setForeground(Color.WHITE);
 		registrarse_boton.setBorder(null);
 		contenedorRegistro.add(registrarse_boton);
+		
+		registrarse_boton.addActionListener(e -> {
+			if (!accept_terms.isSelected()) {
+				JOptionPane.showMessageDialog(null, "Debes aceptar los terminos para registrarte");
+			} else if (username_registro_text.getText().isEmpty() || password.getText().isEmpty()) {
+				JOptionPane.showMessageDialog(null, "Completa todos los campos para registrarte");
+			} else {
+				AuthModel authModel = new AuthModel();
+				AuthController authController = new AuthController();
+				authModel.register(username_registro_text.getText(), password.getText());
+				JOptionPane.showMessageDialog(null, "Registro exitoso");
+				authController.showLogin();
+				frame.dispose();
+			}
+		 });
+		 
+		 registrarse_boton.addActionListener(e -> {
+
+		    if (!accept_terms.isSelected()) {
+		
+		        JOptionPane.showMessageDialog(null, "Debes aceptar los terminos");
+		
+		    } else if (
+		        username_registro_text.getText().isEmpty() ||
+		        password.getText().isEmpty()
+		    ) {
+		
+		        JOptionPane.showMessageDialog(null, "Completa todos los campos");
+		
+		    } else {
+		
+		        String username_val = username_registro_text.getText();
+		        String password_val = password.getText();
+		
+		        AuthModel authModel = new AuthModel();
+		
+		        if (authModel.register(username_val, password_val)) {
+		
+		            JOptionPane.showMessageDialog(null, "Registro exitoso");
+		
+		            AuthController authController = new AuthController();
+		
+		            frame.dispose();
+		            authController.showLogin();
+		
+		        } else {
+		
+		            JOptionPane.showMessageDialog(null, "Error al registrar");
+		
+		        }
+		    }
+		});
 		
 		ImageIcon icon = new ImageIcon("src/public/therian_simbolo3.jpg");
 		JButton simbolo_therian = new JButton(icon);
