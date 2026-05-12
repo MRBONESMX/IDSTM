@@ -48,9 +48,9 @@ public class AuthModel {
 		return false;
 	}
 	
-	public boolean register(String username, String password) {
+	public boolean register(String username, String password, String email) {
 
-    String query = "INSERT INTO usuarios (username, password) VALUES (?, ?)";
+    String query = "INSERT INTO usuarios (username, password, email) VALUES (?, ?, ?)";
 
     Connection conn = null;
 
@@ -68,6 +68,7 @@ public class AuthModel {
 
         ps.setString(1, username);
         ps.setString(2, password);
+        ps.setString(3, email);
 
         int rowsAffected = ps.executeUpdate();
 

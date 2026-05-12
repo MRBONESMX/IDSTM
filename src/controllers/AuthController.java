@@ -19,9 +19,7 @@ public class AuthController {
 		vista.registroView();
 	}
 	
-	public void showHome() {
-		vista.homeView();
-	}
+	
 	
 	
 
