@@ -30,7 +30,6 @@ public class User {
 		String query = "SELECT * FROM usuarios";
 		
 		Connection conn = null;
-		Statement stmt  = null;
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -59,6 +58,25 @@ public class User {
 		
 		
 		return users;
+	}
+	
+	public boolean make(String email, String username, String password) {
+	    String query = "INSERT INTO usuarios (username, password, email) VALUES (?, ?, ?)";
+	    try {
+	        Class.forName("com.mysql.cj.jdbc.Driver");
+	        Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/therianspage", "root", "VibePass0407");
+	        PreparedStatement ps = conn.prepareStatement(query);
+	        ps.setString(1, username);
+	        ps.setString(2, password);
+	        ps.setString(3, email);
+	        int rowsAffected = ps.executeUpdate();
+	        ps.close();
+	        conn.close();
+	        return rowsAffected > 0;
+	    } catch(Exception e) {
+	        e.printStackTrace();
+	    }
+	    return false;
 	}
 
 	public int getId() {

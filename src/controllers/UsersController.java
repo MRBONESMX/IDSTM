@@ -11,13 +11,23 @@ public class UsersController {
 	
 	public UsersController() {
 		view = new UsersView();
+		view.setController(this);
 		model = new User();
 	}
 	
 	
 	public void showUsers() {
 		ArrayList<User> data_users = model.get();
-		view.showUseres(data_users);
+		view.showUsers(data_users);
+	}
+	
+	public boolean addUser(String e, String n, String p) {
+		boolean flag = model.make(e, n, p);
+		return flag;
+	}
+	
+	public void showAddUser() {
+		view.showAddUser();
 	}
 	
 	
