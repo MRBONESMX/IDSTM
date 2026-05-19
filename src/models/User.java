@@ -34,7 +34,7 @@ public class User {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
-			conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/therianspage", "root", "VibePass0407");
+			conn = DriverManager.getConnection("jdbc:mysql://sql.freedb.tech:3306/freedb_1RSWI58V", "u_BVV2lm", "rzGt8DFTX1y1");
 			
 			PreparedStatement ps = conn.prepareStatement(query);
 			ResultSet rs = ps.executeQuery();
@@ -64,7 +64,7 @@ public class User {
 	    String query = "INSERT INTO usuarios (username, password, email) VALUES (?, ?, ?)";
 	    try {
 	        Class.forName("com.mysql.cj.jdbc.Driver");
-	        Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/therianspage", "root", "VibePass0407");
+	        Connection conn = DriverManager.getConnection("jdbc:mysql://sql.freedb.tech:3306/freedb_1RSWI58V", "u_BVV2lm", "rzGt8DFTX1y1");
 	        PreparedStatement ps = conn.prepareStatement(query);
 	        ps.setString(1, username);
 	        ps.setString(2, password);
